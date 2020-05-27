@@ -197,6 +197,7 @@ control SwitchIngress(
             cluster0_bit0_1_action;
         }
         const default_action = cluster0_bit0_0_action;
+        size = 2;
     }
 
     action cluster1_bit0_0_action() {
@@ -228,6 +229,7 @@ control SwitchIngress(
             cluster1_bit0_1_action;
         }
         const default_action = cluster1_bit0_0_action;
+        size = 2;
     }    
 
     action cluster2_bit0_0_action() {
@@ -259,6 +261,7 @@ control SwitchIngress(
             cluster2_bit0_1_action;
         }
         const default_action = cluster2_bit0_0_action;
+        size = 2;
     }    
 
     action cluster3_bit0_0_action() {
@@ -290,6 +293,7 @@ control SwitchIngress(
             cluster3_bit0_1_action;
         }
         const default_action = cluster3_bit0_0_action;
+        size = 2;
     }
 
     action cluster4_bit0_0_action() {
@@ -321,6 +325,7 @@ control SwitchIngress(
             cluster4_bit0_1_action;
         }
         const default_action = cluster4_bit0_0_action;
+        size = 2;
     }
 
     apply {
@@ -335,6 +340,7 @@ control SwitchIngress(
         cluster2_bit0.apply();
         cluster3_bit0.apply();
         cluster4_bit0.apply();
+        //cluster5_bit0.apply();
     }
 
 
