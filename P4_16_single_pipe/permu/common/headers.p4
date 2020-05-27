@@ -33,14 +33,14 @@ header udp_h {
 }
 
 header data_group_h {
-    bit<16> data0;
-    bit<16> data1;
+    bit<32> data0;
+    bit<32> data1;
     bit<16> data2;
     bit<16> data3;
     bit<16> data4;
     bit<16> data5;
-    bit<32> data6;
-    bit<32> data7;
+    bit<16> data6;
+    bit<16> data7;
 }
 
 header key_buf_h {
@@ -50,14 +50,14 @@ header key_buf_h {
 }
 
 header data_buf_h {
-    bit<16> data0;
-    bit<16> data1;
+    bit<32> data0;
+    bit<32> data1;
     bit<16> data2;
     bit<16> data3;
     bit<16> data4;
     bit<16> data5;
-    bit<32> data6;
-    bit<32> data7;
+    bit<16> data6;
+    bit<16> data7;
 }
 
 struct header_t {
