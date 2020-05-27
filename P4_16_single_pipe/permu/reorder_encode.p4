@@ -189,7 +189,7 @@ control SwitchIngress(
 
     table cluster0_bit0 {
         key = {
-            ig_md.key.code0[0:0] : exact;
+            ig_md.key.code0 : ternary;
         }
 
         actions = {
@@ -197,6 +197,10 @@ control SwitchIngress(
             cluster0_bit0_1_action;
         }
         const default_action = cluster0_bit0_0_action;
+        const entries = {
+            32w0 &&& 0x00000001 : cluster0_bit0_0_action();
+            32w1 &&& 0x00000001 : cluster0_bit0_1_action();
+        }
         size = 2;
     }
 
@@ -221,7 +225,7 @@ control SwitchIngress(
 
     table cluster1_bit0 {
         key = {
-            ig_md.key.code0[1:1] : exact;
+            ig_md.key.code0 : ternary;
         }
 
         actions = {
@@ -229,6 +233,10 @@ control SwitchIngress(
             cluster1_bit0_1_action;
         }
         const default_action = cluster1_bit0_0_action;
+        const entries = {
+            32w0 &&& 0x00000002 : cluster1_bit0_0_action();
+            32w1 &&& 0x00000002 : cluster1_bit0_1_action();
+        }
         size = 2;
     }    
 
@@ -253,7 +261,7 @@ control SwitchIngress(
 
     table cluster2_bit0 {
         key = {
-            ig_md.key.code0[2:2] : exact;
+            ig_md.key.code0 : ternary;
         }
 
         actions = {
@@ -261,6 +269,10 @@ control SwitchIngress(
             cluster2_bit0_1_action;
         }
         const default_action = cluster2_bit0_0_action;
+        const entries = {
+            32w0 &&& 0x00000004 : cluster2_bit0_0_action();
+            32w1 &&& 0x00000004 : cluster2_bit0_1_action();
+        }
         size = 2;
     }    
 
@@ -285,7 +297,7 @@ control SwitchIngress(
 
     table cluster3_bit0 {
         key = {
-            ig_md.key.code0[3:3] : exact;
+            ig_md.key.code0 : ternary;
         }
 
         actions = {
@@ -293,6 +305,10 @@ control SwitchIngress(
             cluster3_bit0_1_action;
         }
         const default_action = cluster3_bit0_0_action;
+        const entries = {
+            32w0 &&& 0x00000008 : cluster3_bit0_0_action();
+            32w1 &&& 0x00000008 : cluster3_bit0_1_action();
+        }
         size = 2;
     }
 
@@ -317,7 +333,7 @@ control SwitchIngress(
 
     table cluster4_bit0 {
         key = {
-            ig_md.key.code0[4:4] : exact;
+            ig_md.key.code0 : ternary;
         }
 
         actions = {
@@ -325,6 +341,10 @@ control SwitchIngress(
             cluster4_bit0_1_action;
         }
         const default_action = cluster4_bit0_0_action;
+        const entries = {
+            32w0 &&& 0x00000010 : cluster4_bit0_0_action();
+            32w1 &&& 0x00000010 : cluster4_bit0_1_action();
+        }
         size = 2;
     }
 
