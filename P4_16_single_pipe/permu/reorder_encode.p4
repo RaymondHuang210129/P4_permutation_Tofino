@@ -348,6 +348,42 @@ control SwitchIngress(
         size = 2;
     }
 
+    action cluster5_bit0_0_action() {
+        ig_md.buff.data5 = hdr.group0.data5;
+    }
+
+    action cluster5_bit0_1_action() {
+        ig_md.buff.data5 = hdr.group11.data5;
+        hdr.group11.data5 = hdr.group10.data5;
+        hdr.group10.data5 = hdr.group9.data5;
+        hdr.group9.data5 = hdr.group8.data5;
+        hdr.group8.data5 = hdr.group7.data5;
+        hdr.group7.data5 = hdr.group6.data5;
+        hdr.group6.data5 = hdr.group5.data5;
+        hdr.group5.data5 = hdr.group4.data5;
+        hdr.group4.data5 = hdr.group3.data5;
+        hdr.group3.data5 = hdr.group2.data5;
+        hdr.group2.data5 = hdr.group1.data5;
+        hdr.group1.data5 = hdr.group0.data5;
+    }
+
+    table cluster5_bit0 {
+        key = {
+            ig_md.key.code0 : ternary;
+        }
+
+        actions = {
+            cluster5_bit0_0_action;
+            cluster5_bit0_1_action;
+        }
+        const default_action = cluster5_bit0_0_action;
+        const entries = {
+            32w0 &&& 0x00000020 : cluster5_bit0_0_action();
+            32w1 &&& 0x00000020 : cluster5_bit0_1_action();
+        }
+        size = 2;
+    }
+
     apply {
         //---stage 0
         ig_md.key.code0 = read_key_0_ra.execute(0);
@@ -360,7 +396,7 @@ control SwitchIngress(
         cluster2_bit0.apply();
         cluster3_bit0.apply();
         cluster4_bit0.apply();
-        //cluster5_bit0.apply();
+        cluster5_bit0.apply();
     }
 
 
