@@ -118,9 +118,9 @@ control SwitchIngress(
 
     //-------------------- start of register part
 
-    Register<bit<32>, bit<1>>(32w1, 32w0) key_reg_0;
-    Register<bit<32>, bit<1>>(32w1, 32w0) key_reg_1;
-    Register<bit<32>, bit<1>>(32w1, 32w0) key_reg_2;
+    Register<bit<32>, bit<32>>(32w1, 32w0) key_reg_0;
+    Register<bit<32>, bit<32>>(32w1, 32w0) key_reg_1;
+    Register<bit<32>, bit<32>>(32w1, 32w0) key_reg_2;
 
     RegisterAction<bit<32>, bit<1>, bit<32>>(key_reg_0) read_key_0_ra = {
         void apply(inout bit<32> val, out bit<32> ret) {
@@ -169,6 +169,10 @@ control SwitchIngress(
     //-------------------- start of permutation part
 
     action group0_bit0_0_action() {
+        ig_md.buff.data0 = hdr.group0.data0;
+    }
+
+    action group0_bit0_1_action() {
         ig_md.buff.data0 = hdr.group11.data0;
         hdr.group11.data0 = group10.data0;
         hdr.group10.data0 = group9.data0;
@@ -185,7 +189,7 @@ control SwitchIngress(
 
     table group0_bit0 {
         key = {
-            ig_md.key.code0 mask 0x00000001 : exact;
+            ig_md.key.code0[0:0] : exact;
         }
 
         actions = {
