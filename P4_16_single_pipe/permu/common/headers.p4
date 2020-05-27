@@ -32,6 +32,7 @@ header udp_h {
     bit<16> checksum;
 }
 
+@pa_container_size("ingress", "group1.data0", 32) @pa_container_size("ingress", "group1.data1", 32) @pa_container_size("ingress", "group1.data2", 32) @pa_container_size("ingress", "group1.data3", 16) @pa_container_size("ingress", "group1.data4", 16) @pa_container_size("ingress", "group1.data5", 16) @pa_container_size("ingress", "group1.data6", 16) @pa_container_size("ingress", "group1.data7", 16)
 header data_group_h {
     bit<32> data0;
     bit<32> data1;
