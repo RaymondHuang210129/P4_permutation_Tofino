@@ -35,7 +35,7 @@ header udp_h {
 header data_group_h {
     bit<32> data0;
     bit<32> data1;
-    bit<16> data2;
+    bit<32> data2;
     bit<16> data3;
     bit<16> data4;
     bit<16> data5;
@@ -52,7 +52,7 @@ header key_buf_h {
 header data_buf_h {
     bit<32> data0;
     bit<32> data1;
-    bit<16> data2;
+    bit<32> data2;
     bit<16> data3;
     bit<16> data4;
     bit<16> data5;

@@ -230,6 +230,37 @@ control SwitchIngress(
         const default_action = cluster1_bit0_0_action;
     }    
 
+    action cluster2_bit0_0_action() {
+        ig_md.buff.data2 = hdr.group0.data2;
+    }
+
+    action cluster2_bit0_1_action() {
+        ig_md.buff.data2 = hdr.group11.data2;
+        hdr.group11.data2 = hdr.group10.data2;
+        hdr.group10.data2 = hdr.group9.data2;
+        hdr.group9.data2 = hdr.group8.data2;
+        hdr.group8.data2 = hdr.group7.data2;
+        hdr.group7.data2 = hdr.group6.data2;
+        hdr.group6.data2 = hdr.group5.data2;
+        hdr.group5.data2 = hdr.group4.data2;
+        hdr.group4.data2 = hdr.group3.data2;
+        hdr.group3.data2 = hdr.group2.data2;
+        hdr.group2.data2 = hdr.group1.data2;
+        hdr.group1.data2 = hdr.group0.data2;
+    }
+
+    table cluster2_bit0 {
+        key = {
+            ig_md.key.code0[2:2] : exact;
+        }
+
+        actions = {
+            cluster2_bit0_0_action;
+            cluster2_bit0_1_action;
+        }
+        const default_action = cluster2_bit0_0_action;
+    }    
+
     apply {
         //---stage 0
         ig_md.key.code0 = read_key_0_ra.execute(0);
@@ -239,6 +270,7 @@ control SwitchIngress(
         //---stage 1
         cluster0_bit0.apply();
         cluster1_bit0.apply();
+        cluster2_bit0.apply();
     }
 
 
