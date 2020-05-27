@@ -50,14 +50,14 @@ header key_buf_h {
 }
 
 header data_buf_h {
-    bit<16> buff0;
-    bit<16> buff1;
-    bit<16> buff2;
-    bit<16> buff3;
-    bit<16> buff4;
-    bit<16> buff5;
-    bit<32> buff6;
-    bit<32> buff7;
+    bit<16> data0;
+    bit<16> data1;
+    bit<16> data2;
+    bit<16> data3;
+    bit<16> data4;
+    bit<16> data5;
+    bit<32> data6;
+    bit<32> data7;
 }
 
 struct header_t {

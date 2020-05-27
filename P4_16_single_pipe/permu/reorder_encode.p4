@@ -164,16 +164,47 @@ control SwitchIngress(
         size = 1024;
     }
 
+    //-------------------- end of forwarding part
+
+    //-------------------- start of permutation part
+
+    action group0_bit0_0_action() {
+        ig_md.buff.data0 = hdr.group11.data0;
+        hdr.group11.data0 = group10.data0;
+        hdr.group10.data0 = group9.data0;
+        hdr.group9.data0 = group8.data0;
+        hdr.group8.data0 = group7.data0;
+        hdr.group7.data0 = group6.data0;
+        hdr.group6.data0 = group5.data0;
+        hdr.group5.data0 = group4.data0;
+        hdr.group4.data0 = group3.data0;
+        hdr.group3.data0 = group2.data0;
+        hdr.group2.data0 = group1.data0;
+        hdr.group1.data0 = group0.data0;
+    }
+
+    table group0_bit0 {
+        key = {
+            ig_md.key.code0 mask 0x00000001 : exact;
+        }
+
+        actions = {
+            group0_bit0_0_action;
+            group0_bit0_1_action;
+        }
+        const default_action = group0_bit0_0_action;
+    }    
+
     apply {
         //---stage 0
-        //ig_md.key.code0 = read_key_0_ra.execute(0);
-        //ig_md.key.code1 = read_key_1_ra.execute(0);
-        //ig_md.key.code2 = read_key_2_ra.execute(0);
-	hdr.group0.data6 = read_key_0_ra.execute(0);
-	hdr.group1.data6 = read_key_1_ra.execute(0);
-        hdr.group2.data6 = read_key_2_ra.execute(0);
+        ig_md.key.code0 = read_key_0_ra.execute(0);
+        ig_md.key.code1 = read_key_1_ra.execute(0);
+        ig_md.key.code2 = read_key_2_ra.execute(0);
         forward.apply();
+        //---stage 1
+        group0_bit0.apply();
     }
+
 
 }
 
