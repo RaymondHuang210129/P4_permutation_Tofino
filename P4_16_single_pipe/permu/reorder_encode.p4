@@ -220,7 +220,7 @@ control SwitchIngress(
 
     table cluster1_bit0 {
         key = {
-            ig_md.key.code0[0:0] : exact;
+            ig_md.key.code0[1:1] : exact;
         }
 
         actions = {
