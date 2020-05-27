@@ -8,7 +8,7 @@
 #include "common/headers.p4"
 #include "common/util.p4"
 
-control SwitchIngressParser(
+parser SwitchIngressParser(
         packet_in pkt,
         out header_t hdr,
         out metadata_t ig_md,
@@ -42,57 +42,57 @@ control SwitchIngressParser(
     }
 
     state parse_group_1 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group1);
         transition parse_group_2;
     }
 
     state parse_group_2 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group2);
         transition parse_group_3;
     }
 
     state parse_group_3 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group3);
         transition parse_group_4;
     }
 
     state parse_group_4 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group4);
         transition parse_group_5;
     }
 
     state parse_group_5 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group5);
         transition parse_group_6;
     }
 
     state parse_group_6 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group6);
         transition parse_group_7;
     }
 
     state parse_group_7 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group7);
         transition parse_group_8;
     }
 
     state parse_group_8 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group8);
         transition parse_group_9;
     }
 
     state parse_group_9 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group9);
         transition parse_group_10;
     }
 
     state parse_group_10 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group10);
         transition parse_group_11;
     }
 
     state parse_group_11 {
-        pkt.extract(hdr.group0);
+        pkt.extract(hdr.group11);
         transition accept;
     }
 }
@@ -126,19 +126,19 @@ control SwitchIngress(
         void apply(inout bit<32> val, out bit<32> ret) {
             ret = val;
         }
-    }
+    };
 
     RegisterAction<bit<32>, bit<1>, bit<32>>(key_reg_1) read_key_1_ra = {
         void apply(inout bit<32> val, out bit<32> ret) {
             ret = val;
         }
-    }
+    };
 
     RegisterAction<bit<32>, bit<1>, bit<32>>(key_reg_2) read_key_2_ra = {
         void apply(inout bit<32> val, out bit<32> ret) {
             ret = val;
         }
-    }
+    };
 
     //-------------------- end of register part
 
@@ -154,21 +154,24 @@ control SwitchIngress(
 
     table forward {
         key = {
-            hdr.ethernet.dst_addr : exact;
+            hdr.ethernet.dstAddr : exact;
         }
         actions = {
             set_egr;
             set_drop;
         }
-        default_action: set_egr(132);
+        const default_action = set_egr(132);
         size = 1024;
     }
 
     apply {
         //---stage 0
-        ig_md.key.code0 = read_key_0_ra.execute(0);
-        ig_md.key.code1 = read_key_1_ra.execute(0);
-        ig_md.key.code2 = read_key_2_ra.execute(0);
+        //ig_md.key.code0 = read_key_0_ra.execute(0);
+        //ig_md.key.code1 = read_key_1_ra.execute(0);
+        //ig_md.key.code2 = read_key_2_ra.execute(0);
+	hdr.group0.data6 = read_key_0_ra.execute(0);
+	hdr.group1.data6 = read_key_1_ra.execute(0);
+        hdr.group2.data6 = read_key_2_ra.execute(0);
         forward.apply();
     }
 
@@ -181,4 +184,4 @@ Pipeline(SwitchIngressParser(),
          EmptyEgress(),
          EmptyEgressDeparser()) pipe;
 
-Switch(Pipe) main;
+Switch(pipe) main;

@@ -63,7 +63,7 @@ header data_buf_h {
 struct header_t {
     ethernet_h ethernet;
     ipv4_h ipv4;
-    udp.h udp;
+    udp_h udp;
     data_group_h group0;
     data_group_h group1;
     data_group_h group2;
@@ -79,6 +79,12 @@ struct header_t {
 }
 
 struct metadata_t {
-    keybuf_h key;
+    key_buf_h key;
     data_buf_h buff;
 }
+
+struct empty_header_t {}
+
+struct empty_metadata_t {}
+
+#endif /* _HEADERS_ */
