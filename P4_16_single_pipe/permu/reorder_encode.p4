@@ -384,6 +384,78 @@ control SwitchIngress(
         size = 2;
     }
 
+    action cluster6_bit0_0_action() {
+        ig_md.buff.data6 = hdr.group0.data6;
+    }
+
+    action cluster6_bit0_1_action() {
+        ig_md.buff.data6 = hdr.group11.data6;
+        hdr.group11.data6 = hdr.group10.data6;
+        hdr.group10.data6 = hdr.group9.data6;
+        hdr.group9.data6 = hdr.group8.data6;
+        hdr.group8.data6 = hdr.group7.data6;
+        hdr.group7.data6 = hdr.group6.data6;
+        hdr.group6.data6 = hdr.group5.data6;
+        hdr.group5.data6 = hdr.group4.data6;
+        hdr.group4.data6 = hdr.group3.data6;
+        hdr.group3.data6 = hdr.group2.data6;
+        hdr.group2.data6 = hdr.group1.data6;
+        hdr.group1.data6 = hdr.group0.data6;
+    }
+
+    table cluster6_bit0 {
+        key = {
+            ig_md.key.code0 : ternary;
+        }
+
+        actions = {
+            cluster6_bit0_0_action;
+            cluster6_bit0_1_action;
+        }
+        const default_action = cluster6_bit0_0_action;
+        const entries = {
+            32w0 &&& 0x00000040 : cluster6_bit0_0_action();
+            32w1 &&& 0x00000040 : cluster6_bit0_1_action();
+        }
+        size = 2;
+    }
+
+    action cluster7_bit0_0_action() {
+        ig_md.buff.data7 = hdr.group0.data7;
+    }
+
+    action cluster7_bit0_1_action() {
+        ig_md.buff.data7 = hdr.group11.data7;
+        hdr.group11.data7 = hdr.group10.data7;
+        hdr.group10.data7 = hdr.group9.data7;
+        hdr.group9.data7 = hdr.group8.data7;
+        hdr.group8.data7 = hdr.group7.data7;
+        hdr.group7.data7 = hdr.group6.data7;
+        hdr.group6.data7 = hdr.group5.data7;
+        hdr.group5.data7 = hdr.group4.data7;
+        hdr.group4.data7 = hdr.group3.data7;
+        hdr.group3.data7 = hdr.group2.data7;
+        hdr.group2.data7 = hdr.group1.data7;
+        hdr.group1.data7 = hdr.group0.data7;
+    }
+
+    table cluster7_bit0 {
+        key = {
+            ig_md.key.code0 : ternary;
+        }
+
+        actions = {
+            cluster7_bit0_0_action;
+            cluster7_bit0_1_action;
+        }
+        const default_action = cluster7_bit0_0_action;
+        const entries = {
+            32w0 &&& 0x00000080 : cluster7_bit0_0_action();
+            32w1 &&& 0x00000080 : cluster7_bit0_1_action();
+        }
+        size = 2;
+    }
+
     apply {
         //---stage 0
         ig_md.key.code0 = read_key_0_ra.execute(0);
@@ -397,6 +469,8 @@ control SwitchIngress(
         cluster3_bit0.apply();
         cluster4_bit0.apply();
         cluster5_bit0.apply();
+        cluster6_bit0.apply();
+        cluster7_bit0.apply();
     }
 
 
