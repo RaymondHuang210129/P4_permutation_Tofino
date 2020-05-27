@@ -168,11 +168,11 @@ control SwitchIngress(
 
     //-------------------- start of permutation part
 
-    action group0_bit0_0_action() {
+    action cluster0_bit0_0_action() {
         ig_md.buff.data0 = hdr.group0.data0;
     }
 
-    action group0_bit0_1_action() {
+    action cluster0_bit0_1_action() {
         ig_md.buff.data0 = hdr.group11.data0;
         hdr.group11.data0 = hdr.group10.data0;
         hdr.group10.data0 = hdr.group9.data0;
@@ -187,16 +187,47 @@ control SwitchIngress(
         hdr.group1.data0 = hdr.group0.data0;
     }
 
-    table group0_bit0 {
+    table cluster0_bit0 {
         key = {
             ig_md.key.code0[0:0] : exact;
         }
 
         actions = {
-            group0_bit0_0_action;
-            group0_bit0_1_action;
+            cluster0_bit0_0_action;
+            cluster0_bit0_1_action;
         }
-        const default_action = group0_bit0_0_action;
+        const default_action = cluster0_bit0_0_action;
+    }
+
+    action cluster1_bit0_0_action() {
+        ig_md.buff.data1 = hdr.group0.data1;
+    }
+
+    action cluster1_bit0_1_action() {
+        ig_md.buff.data1 = hdr.group11.data1;
+        hdr.group11.data1 = hdr.group10.data1;
+        hdr.group10.data1 = hdr.group9.data1;
+        hdr.group9.data1 = hdr.group8.data1;
+        hdr.group8.data1 = hdr.group7.data1;
+        hdr.group7.data1 = hdr.group6.data1;
+        hdr.group6.data1 = hdr.group5.data1;
+        hdr.group5.data1 = hdr.group4.data1;
+        hdr.group4.data1 = hdr.group3.data1;
+        hdr.group3.data1 = hdr.group2.data1;
+        hdr.group2.data1 = hdr.group1.data1;
+        hdr.group1.data1 = hdr.group0.data1;
+    }
+
+    table cluster1_bit0 {
+        key = {
+            ig_md.key.code0[0:0] : exact;
+        }
+
+        actions = {
+            cluster1_bit0_0_action;
+            cluster1_bit0_1_action;
+        }
+        const default_action = cluster1_bit0_0_action;
     }    
 
     apply {
@@ -206,7 +237,8 @@ control SwitchIngress(
         ig_md.key.code2 = read_key_2_ra.execute(0);
         forward.apply();
         //---stage 1
-        group0_bit0.apply();
+        cluster0_bit0.apply();
+        cluster1_bit0.apply();
     }
 
 
