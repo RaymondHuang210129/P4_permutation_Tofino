@@ -174,17 +174,17 @@ control SwitchIngress(
 
     action group0_bit0_1_action() {
         ig_md.buff.data0 = hdr.group11.data0;
-        hdr.group11.data0 = group10.data0;
-        hdr.group10.data0 = group9.data0;
-        hdr.group9.data0 = group8.data0;
-        hdr.group8.data0 = group7.data0;
-        hdr.group7.data0 = group6.data0;
-        hdr.group6.data0 = group5.data0;
-        hdr.group5.data0 = group4.data0;
-        hdr.group4.data0 = group3.data0;
-        hdr.group3.data0 = group2.data0;
-        hdr.group2.data0 = group1.data0;
-        hdr.group1.data0 = group0.data0;
+        hdr.group11.data0 = hdr.group10.data0;
+        hdr.group10.data0 = hdr.group9.data0;
+        hdr.group9.data0 = hdr.group8.data0;
+        hdr.group8.data0 = hdr.group7.data0;
+        hdr.group7.data0 = hdr.group6.data0;
+        hdr.group6.data0 = hdr.group5.data0;
+        hdr.group5.data0 = hdr.group4.data0;
+        hdr.group4.data0 = hdr.group3.data0;
+        hdr.group3.data0 = hdr.group2.data0;
+        hdr.group2.data0 = hdr.group1.data0;
+        hdr.group1.data0 = hdr.group0.data0;
     }
 
     table group0_bit0 {
