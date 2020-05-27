@@ -169,7 +169,6 @@ control SwitchIngress(
     //-------------------- start of permutation part
 
     action cluster0_bit0_0_action() {
-        @pa_container_size("gress", "ig_md.buff.data0", 32)
         ig_md.buff.data0 = hdr.group0.data0;
     }
 
@@ -201,7 +200,6 @@ control SwitchIngress(
     }
 
     action cluster1_bit0_0_action() {
-        @pa_container_size("gress", "ig_md.buff.data1", 32)
         ig_md.buff.data1 = hdr.group0.data1;
     }
 
@@ -233,7 +231,6 @@ control SwitchIngress(
     }    
 
     action cluster2_bit0_0_action() {
-        @pa_container_size("gress", "ig_md.buff.data2", 32)
         ig_md.buff.data2 = hdr.group0.data2;
     }
 
@@ -265,7 +262,6 @@ control SwitchIngress(
     }    
 
     action cluster3_bit0_0_action() {
-        @pa_container_size("gress", "ig_md.buff.data3", 16)
         ig_md.buff.data3 = hdr.group0.data3;
     }
 
@@ -297,7 +293,6 @@ control SwitchIngress(
     }
 
     action cluster4_bit0_0_action() {
-        @pa_container_size("gress", "ig_md.buff.data4", 16)
         ig_md.buff.data4 = hdr.group0.data4;
     }
 
