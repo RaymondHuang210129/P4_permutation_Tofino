@@ -4,6 +4,15 @@
 typedef bit<48> mac_addr_t;
 typedef bit<32> ipv4_addr_t;
 
+typedef bit<32> cluster0_t;
+typedef bit<32> cluster1_t;
+typedef bit<32> cluster2_t;
+typedef bit<16> cluster3_t;
+typedef bit<16> cluster4_t;
+typedef bit<16> cluster5_t;
+typedef bit<16> cluster6_t;
+typedef bit<16> cluster7_t;
+
 header ethernet_h {
     mac_addr_t dstAddr;
     mac_addr_t srcAddr;
@@ -32,16 +41,16 @@ header udp_h {
     bit<16> checksum;
 }
 
-@pa_container_size("ingress", "group0.data0", 32) @pa_container_size("ingress", "group0.data1", 32) @pa_container_size("ingress", "group0.data2", 32) @pa_container_size("ingress", "group0.data3", 16) @pa_container_size("ingress", "group0.data4", 16) @pa_container_size("ingress", "group0.data5", 16) @pa_container_size("ingress", "group0.data6", 16) @pa_container_size("ingress", "group0.data7", 16) 
+@pa_container_size("ingress", "group0.data0", 32) @pa_container_size("ingress", "group0.data1", 32) @pa_container_size("ingress", "group0.data2", 32) @pa_container_size("ingress", "group0.data3", 16) @pa_container_size("ingress", "group0.data4", 16) @pa_container_size("ingress", "group0.data5", 16) @pa_container_size("ingress", "group0.data6", 16) @pa_container_size("ingress", "group0.data7", 8, 8) 
 header data_group_h {
-    bit<32> data0;
-    bit<32> data1;
-    bit<32> data2;
-    bit<16> data3;
-    bit<16> data4;
-    bit<16> data5;
-    bit<16> data6;
-    bit<16> data7;
+    cluster0_t data0;
+    cluster1_t data1;
+    cluster2_t data2;
+    cluster3_t data3;
+    cluster4_t data4;
+    cluster5_t data5;
+    cluster6_t data6;
+    cluster7_t data7;
 }
 
 header key_buf_h {
@@ -50,10 +59,16 @@ header key_buf_h {
     bit<32> code2;
 }
 
+@padding
+header ignore_h {
+    bit<2816> data;
+}
+
 struct header_t {
     ethernet_h ethernet;
     ipv4_h ipv4;
     udp_h udp;
+    ignore_h ignore;
     data_group_h group0;
     data_group_h group1;
     data_group_h group2;

@@ -36,6 +36,11 @@ parser SwitchIngressParser(
         transition parse_group_0;
     }
 
+//    state parse_ignore {
+//        pkt.extract(hdr.ignore);
+//        transition parse_group_0;
+//    }
+
     state parse_group_0 {
         pkt.extract(hdr.group0);
         transition parse_group_1;
@@ -189,7 +194,7 @@ control SwitchIngress(
     //-------------------- start of permutation part
 
     action cluster0_bit0_0_action() {
-        bit<32> tmp = hdr.group0.data0;
+        cluster0_t tmp = hdr.group0.data0;
         hdr.group0.data0 = hdr.group1.data0;
         hdr.group1.data0 = hdr.group2.data0;
         hdr.group2.data0 = hdr.group3.data0;
@@ -209,7 +214,7 @@ control SwitchIngress(
     }
 
     action cluster0_bit0_1_action() {
-        bit<32> tmp = hdr.group15.data0;
+        cluster0_t tmp = hdr.group15.data0;
         hdr.group15.data0 = hdr.group14.data0;
         hdr.group14.data0 = hdr.group13.data0;
         hdr.group13.data0 = hdr.group12.data0;
@@ -246,7 +251,7 @@ control SwitchIngress(
     }
 
     action cluster1_bit0_0_action() {
-        bit<32> tmp = hdr.group0.data1;
+        cluster1_t tmp = hdr.group0.data1;
         hdr.group0.data1 = hdr.group1.data1;
         hdr.group1.data1 = hdr.group2.data1;
         hdr.group2.data1 = hdr.group3.data1;
@@ -266,7 +271,7 @@ control SwitchIngress(
     }
 
     action cluster1_bit0_1_action() {
-        bit<32> tmp = hdr.group15.data1;
+        cluster1_t tmp = hdr.group15.data1;
         hdr.group15.data1 = hdr.group14.data1;
         hdr.group14.data1 = hdr.group13.data1;
         hdr.group13.data1 = hdr.group12.data1;
@@ -303,7 +308,7 @@ control SwitchIngress(
     }    
 
     action cluster2_bit0_0_action() {
-        bit<32> tmp = hdr.group0.data2;
+        cluster2_t tmp = hdr.group0.data2;
         hdr.group0.data2 = hdr.group1.data2;
         hdr.group1.data2 = hdr.group2.data2;
         hdr.group2.data2 = hdr.group3.data2;
@@ -323,7 +328,7 @@ control SwitchIngress(
     }
 
     action cluster2_bit0_1_action() {
-        bit<32> tmp = hdr.group15.data2;
+        cluster2_t tmp = hdr.group15.data2;
         hdr.group15.data2 = hdr.group14.data2;
         hdr.group14.data2 = hdr.group13.data2;
         hdr.group13.data2 = hdr.group12.data2;
@@ -360,7 +365,7 @@ control SwitchIngress(
     }    
 
     action cluster3_bit0_0_action() {
-        bit<16> tmp = hdr.group0.data3;
+        cluster3_t tmp = hdr.group0.data3;
         hdr.group0.data3 = hdr.group1.data3;
         hdr.group1.data3 = hdr.group2.data3;
         hdr.group2.data3 = hdr.group3.data3;
@@ -380,7 +385,7 @@ control SwitchIngress(
     }
 
     action cluster3_bit0_1_action() {
-        bit<16> tmp = hdr.group15.data3;
+        cluster3_t tmp = hdr.group15.data3;
         hdr.group15.data3 = hdr.group14.data3;
         hdr.group14.data3 = hdr.group13.data3;
         hdr.group13.data3 = hdr.group12.data3;
@@ -417,7 +422,7 @@ control SwitchIngress(
     }
 
     action cluster4_bit0_0_action() {
-        bit<16> tmp = hdr.group0.data4;
+        cluster4_t tmp = hdr.group0.data4;
         hdr.group0.data4 = hdr.group1.data4;
         hdr.group1.data4 = hdr.group2.data4;
         hdr.group2.data4 = hdr.group3.data4;
@@ -437,7 +442,7 @@ control SwitchIngress(
     }
 
     action cluster4_bit0_1_action() {
-        bit<16> tmp = hdr.group15.data4;
+        cluster4_t tmp = hdr.group15.data4;
         hdr.group15.data4 = hdr.group14.data4;
         hdr.group14.data4 = hdr.group13.data4;
         hdr.group13.data4 = hdr.group12.data4;
@@ -474,7 +479,7 @@ control SwitchIngress(
     }
 
     action cluster5_bit0_0_action() {
-        bit<16> tmp = hdr.group0.data5;
+        cluster5_t tmp = hdr.group0.data5;
         hdr.group0.data5 = hdr.group1.data5;
         hdr.group1.data5 = hdr.group2.data5;
         hdr.group2.data5 = hdr.group3.data5;
@@ -494,7 +499,7 @@ control SwitchIngress(
     }
 
     action cluster5_bit0_1_action() {
-        bit<16> tmp = hdr.group15.data5;
+        cluster5_t tmp = hdr.group15.data5;
         hdr.group15.data5 = hdr.group14.data5;
         hdr.group14.data5 = hdr.group13.data5;
         hdr.group13.data5 = hdr.group12.data5;
@@ -531,7 +536,7 @@ control SwitchIngress(
     }
 
     action cluster6_bit0_0_action() {
-        bit<16> tmp = hdr.group0.data6;
+        cluster6_t tmp = hdr.group0.data6;
         hdr.group0.data6 = hdr.group1.data6;
         hdr.group1.data6 = hdr.group2.data6;
         hdr.group2.data6 = hdr.group3.data6;
@@ -551,7 +556,7 @@ control SwitchIngress(
     }
 
     action cluster6_bit0_1_action() {
-        bit<16> tmp = hdr.group15.data6;
+        cluster6_t tmp = hdr.group15.data6;
         hdr.group15.data6 = hdr.group14.data6;
         hdr.group14.data6 = hdr.group13.data6;
         hdr.group13.data6 = hdr.group12.data6;
@@ -588,7 +593,7 @@ control SwitchIngress(
     }
 
     action cluster7_bit0_0_action() {
-        bit<16> tmp = hdr.group0.data7;
+        cluster7_t tmp = hdr.group0.data7;
         hdr.group0.data7 = hdr.group1.data7;
         hdr.group1.data7 = hdr.group2.data7;
         hdr.group2.data7 = hdr.group3.data7;
@@ -608,7 +613,7 @@ control SwitchIngress(
     }
 
     action cluster7_bit0_1_action() {
-        bit<16> tmp = hdr.group15.data7;
+        cluster7_t tmp = hdr.group15.data7;
         hdr.group15.data7 = hdr.group14.data7;
         hdr.group14.data7 = hdr.group13.data7;
         hdr.group13.data7 = hdr.group12.data7;
