@@ -636,7 +636,7 @@ control SwitchIngress(
             cluster7_bit0_0_action;
             cluster7_bit0_1_action;
         }
-        const default_action = cluster7_bit0_00_action;
+        const default_action = cluster7_bit0_0_action;
         const entries = {
             32w1 &&& 0x00000180 : cluster7_bit0_0_action();
             32w2 &&& 0x00000180 : cluster7_bit0_1_action();
