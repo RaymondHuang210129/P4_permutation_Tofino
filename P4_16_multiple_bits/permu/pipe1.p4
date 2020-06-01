@@ -94,9 +94,9 @@ parser Pipe1SwitchIngressParser(
 
     state parse_group_11 {
         pkt.extract(hdr.group11);
-        transition parse_group_12;
+        transition accept;
     }
-
+/*
     state parse_group_12 {
         pkt.extract(hdr.group12);
         transition parse_group_13;
@@ -116,6 +116,7 @@ parser Pipe1SwitchIngressParser(
         pkt.extract(hdr.group15);
         transition accept;
     }
+*/
 }
 
 control Pipe1SwitchIngressDeparser(
