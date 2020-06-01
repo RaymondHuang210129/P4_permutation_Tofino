@@ -758,7 +758,7 @@ control Pipe1SwitchIngress(
         }
         size = 4;
     }
-
+/*
     ////------ bit 1
 
     action cluster0_bit1_0_action() {
@@ -5338,7 +5338,7 @@ control Pipe1SwitchIngress(
         }
         size = 2;
     }
-
+*/
     apply {
         //---stage 0
         ig_md.key.code0 = read_key_0_ra.execute(0);
@@ -5354,6 +5354,7 @@ control Pipe1SwitchIngress(
         cluster5_bit0.apply();
         cluster6_bit0.apply();
         cluster7_bit0.apply();
+/*
         //---stage 2
         cluster0_bit1.apply();
         cluster1_bit1.apply();
@@ -5444,5 +5445,6 @@ control Pipe1SwitchIngress(
         cluster5_bit10.apply();
         cluster6_bit10.apply();
         cluster7_bit10.apply();
+*/
     }
 }

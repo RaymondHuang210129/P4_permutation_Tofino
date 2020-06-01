@@ -6,9 +6,6 @@
 #endif
 
 #include "pipe1.p4"
-#include "pipe2.p4"
-#include "pipe3.p4"
-#include "pipe4.p4"
 
 #include "common/headers.p4"
 #include "common/util.p4"
