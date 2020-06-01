@@ -455,43 +455,9 @@ control SwitchIngress(
         }
         size = 4;
     }
-/*
-    action cluster8_bit0_0_action() {
-        ig_md.buff.data8 = hdr.group0.data8;
-    }
 
-    action cluster8_bit0_1_action() {
-        ig_md.buff.data8 = hdr.group11.data8;
-        hdr.group11.data8 = hdr.group10.data8;
-        hdr.group10.data8 = hdr.group9.data8;
-        hdr.group9.data8 = hdr.group8.data8;
-        hdr.group8.data8 = hdr.group7.data8;
-        hdr.group7.data8 = hdr.group6.data8;
-        hdr.group6.data8 = hdr.group5.data8;
-        hdr.group5.data8 = hdr.group4.data8;
-        hdr.group4.data8 = hdr.group3.data8;
-        hdr.group3.data8 = hdr.group2.data8;
-        hdr.group2.data8 = hdr.group1.data8;
-        hdr.group1.data8 = hdr.group0.data8;
-    }
 
-    table cluster8_bit0 {
-        key = {
-            ig_md.key.code0 : ternary;
-        }
 
-        actions = {
-            cluster8_bit0_0_action;
-            cluster8_bit0_1_action;
-        }
-        const default_action = cluster8_bit0_0_action;
-        const entries = {
-            32w0 &&& 0x00000100 : cluster8_bit0_0_action();
-            32w1 &&& 0x00000100 : cluster8_bit0_1_action();
-        }
-        size = 2;
-    }
-*/
     apply {
         //---stage 0
         ig_md.key.code0 = read_key_0_ra.execute(0);
@@ -507,6 +473,98 @@ control SwitchIngress(
         cluster5_bit0.apply();
         cluster6_bit0.apply();
         cluster7_bit0.apply();
+/*
+        //---stage 2
+        cluster0_bit1.apply();
+        cluster1_bit1.apply();
+        cluster2_bit1.apply();
+        cluster3_bit1.apply();
+        cluster4_bit1.apply();
+        cluster5_bit1.apply();
+        cluster6_bit1.apply();
+        cluster7_bit1.apply();
+        //---stage 3
+        cluster0_bit2.apply();
+        cluster1_bit2.apply();
+        cluster2_bit2.apply();
+        cluster3_bit2.apply();
+        cluster4_bit2.apply();
+        cluster5_bit2.apply();
+        cluster6_bit2.apply();
+        cluster7_bit2.apply();
+        //---stage 4
+        cluster0_bit3.apply();
+        cluster1_bit3.apply();
+        cluster2_bit3.apply();
+        cluster3_bit3.apply();
+        cluster4_bit3.apply();
+        cluster5_bit3.apply();
+        cluster6_bit3.apply();
+        cluster7_bit3.apply();
+        //---stage 5
+        cluster0_bit4.apply();
+        cluster1_bit4.apply();
+        cluster2_bit4.apply();
+        cluster3_bit4.apply();
+        cluster4_bit4.apply();
+        cluster5_bit4.apply();
+        cluster6_bit4.apply();
+        cluster7_bit4.apply();
+        //---stage 6
+        cluster0_bit5.apply();
+        cluster1_bit5.apply();
+        cluster2_bit5.apply();
+        cluster3_bit5.apply();
+        cluster4_bit5.apply();
+        cluster5_bit5.apply();
+        cluster6_bit5.apply();
+        cluster7_bit5.apply();
+        //---stage 7
+        cluster0_bit6.apply();
+        cluster1_bit6.apply();
+        cluster2_bit6.apply();
+        cluster3_bit6.apply();
+        cluster4_bit6.apply();
+        cluster5_bit6.apply();
+        cluster6_bit6.apply();
+        cluster7_bit6.apply();
+        //---stage 8
+        cluster0_bit7.apply();
+        cluster1_bit7.apply();
+        cluster2_bit7.apply();
+        cluster3_bit7.apply();
+        cluster4_bit7.apply();
+        cluster5_bit7.apply();
+        cluster6_bit7.apply();
+        cluster7_bit7.apply();
+        //---stage 9
+        cluster0_bit8.apply();
+        cluster1_bit8.apply();
+        cluster2_bit8.apply();
+        cluster3_bit8.apply();
+        cluster4_bit8.apply();
+        cluster5_bit8.apply();
+        cluster6_bit8.apply();
+        cluster7_bit8.apply();
+        //---stage 10
+        cluster0_bit9.apply();
+        cluster1_bit9.apply();
+        cluster2_bit9.apply();
+        cluster3_bit9.apply();
+        cluster4_bit9.apply();
+        cluster5_bit9.apply();
+        cluster6_bit9.apply();
+        cluster7_bit9.apply();
+        //---stage 1
+        cluster0_bit10.apply();
+        cluster1_bit10.apply();
+        cluster2_bit10.apply();
+        cluster3_bit10.apply();
+        cluster4_bit10.apply();
+        cluster5_bit10.apply();
+        cluster6_bit10.apply();
+        cluster7_bit10.apply();
+*/
     }
 
 
