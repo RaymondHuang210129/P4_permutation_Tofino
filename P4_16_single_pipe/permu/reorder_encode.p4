@@ -169,37 +169,22 @@ control SwitchIngress(
     //-------------------- start of permutation part
 
     action cluster0_bit0_0_action() {
-        ig_md.buff.data0[31:16] = hdr.group0.data0[31:16];
-
-        ig_md.buff.data0[15:0] = hdr.group11.data0[15:0];
-        hdr.group11.data0[15:0] = hdr.group10.data0[15:0];
-        hdr.group10.data0[15:0] = hdr.group9.data0[15:0];
-        hdr.group9.data0[15:0] = hdr.group8.data0[15:0];
-        hdr.group8.data0[15:0] = hdr.group7.data0[15:0];
-        hdr.group7.data0[15:0] = hdr.group6.data0[15:0];
-        hdr.group6.data0[15:0] = hdr.group5.data0[15:0];
-        hdr.group5.data0[15:0] = hdr.group4.data0[15:0];
-        hdr.group4.data0[15:0] = hdr.group3.data0[15:0];
-        hdr.group3.data0[15:0] = hdr.group2.data0[15:0];
-        hdr.group2.data0[15:0] = hdr.group1.data0[15:0];
-        hdr.group1.data0[15:0] = hdr.group0.data0[15:0];
+        ig_md.buff.data0 = hdr.group0.data0;
     }
 
     action cluster0_bit0_1_action() {
-        ig_md.buff.data0[31:16] = hdr.group11.data0[31:16];
-        hdr.group11.data0[31:16] = hdr.group10.data0[31:16];
-        hdr.group10.data0[31:16] = hdr.group9.data0[31:16];
-        hdr.group9.data0[31:16] = hdr.group8.data0[31:16];
-        hdr.group8.data0[31:16] = hdr.group7.data0[31:16];
-        hdr.group7.data0[31:16] = hdr.group6.data0[31:16];
-        hdr.group6.data0[31:16] = hdr.group5.data0[31:16];
-        hdr.group5.data0[31:16] = hdr.group4.data0[31:16];
-        hdr.group4.data0[31:16] = hdr.group3.data0[31:16];
-        hdr.group3.data0[31:16] = hdr.group2.data0[31:16];
-        hdr.group2.data0[31:16] = hdr.group1.data0[31:16];
-        hdr.group1.data0[31:16] = hdr.group0.data0[31:16];
-
-        ig_md.buff.data0[15:0] = hdr.group0.data0[15:0];
+        ig_md.buff.data0 = hdr.group11.data0;
+        hdr.group11.data0 = hdr.group10.data0;
+        hdr.group10.data0 = hdr.group9.data0;
+        hdr.group9.data0 = hdr.group8.data0;
+        hdr.group8.data0 = hdr.group7.data0;
+        hdr.group7.data0 = hdr.group6.data0;
+        hdr.group6.data0 = hdr.group5.data0;
+        hdr.group5.data0 = hdr.group4.data0;
+        hdr.group4.data0 = hdr.group3.data0;
+        hdr.group3.data0 = hdr.group2.data0;
+        hdr.group2.data0 = hdr.group1.data0;
+        hdr.group1.data0 = hdr.group0.data0;
     }
 
     table cluster0_bit0 {
@@ -435,41 +420,11 @@ control SwitchIngress(
         size = 2;
     }
 
-    action cluster7_bit0_00_action() {
+    action cluster7_bit0_0_action() {
         ig_md.buff.data7 = hdr.group0.data7;
-        ig_md.buff.data8[7:0] = hdr.group0.data8[7:0];
-        ig_md.buff.data8[15:8] = hdr.group0.data8[15:8];
     }
 
-    action cluster7_bit0_01_action() {
-        ig_md.buff.data7 = hdr.group0.data7;
-        ig_md.buff.data8[7:0] = hdr.group11.data8[7:0];
-        hdr.group11.data8[7:0] = hdr.group10.data8[7:0];
-        hdr.group10.data8[7:0] = hdr.group9.data8[7:0];
-        hdr.group9.data8[7:0] = hdr.group8.data8[7:0];
-        hdr.group8.data8[7:0] = hdr.group7.data8[7:0];
-        hdr.group7.data8[7:0] = hdr.group6.data8[7:0];
-        hdr.group6.data8[7:0] = hdr.group5.data8[7:0];
-        hdr.group5.data8[7:0] = hdr.group4.data8[7:0];
-        hdr.group4.data8[7:0] = hdr.group3.data8[7:0];
-        hdr.group3.data8[7:0] = hdr.group2.data8[7:0];
-        hdr.group2.data8[7:0] = hdr.group1.data8[7:0];
-        hdr.group1.data8[7:0] = hdr.group0.data8[7:0];
-        ig_md.buff.data8[15:8] = hdr.group11.data8[15:8];
-        hdr.group11.data8[15:8] = hdr.group10.data8[15:8];
-        hdr.group10.data8[15:8] = hdr.group9.data8[15:8];
-        hdr.group9.data8[15:8] = hdr.group8.data8[15:8];
-        hdr.group8.data8[15:8] = hdr.group7.data8[15:8];
-        hdr.group7.data8[15:8] = hdr.group6.data8[15:8];
-        hdr.group6.data8[15:8] = hdr.group5.data8[15:8];
-        hdr.group5.data8[15:8] = hdr.group4.data8[15:8];
-        hdr.group4.data8[15:8] = hdr.group3.data8[15:8];
-        hdr.group3.data8[15:8] = hdr.group2.data8[15:8];
-        hdr.group2.data8[15:8] = hdr.group1.data8[15:8];
-        hdr.group1.data8[15:8] = hdr.group0.data8[15:8];
-    }
-
-    action cluster7_bit0_10_action() {
+    action cluster7_bit0_1_action() {
         ig_md.buff.data7 = hdr.group11.data7;
         hdr.group11.data7 = hdr.group10.data7;
         hdr.group10.data7 = hdr.group9.data7;
@@ -482,47 +437,6 @@ control SwitchIngress(
         hdr.group3.data7 = hdr.group2.data7;
         hdr.group2.data7 = hdr.group1.data7;
         hdr.group1.data7 = hdr.group0.data7;
-        ig_md.buff.data8[7:0] = hdr.group0.data8[7:0];
-        ig_md.buff.data8[15:8] = hdr.group0.data8[15:8];
-    }
-
-    action cluster7_bit0_11_action() {
-        ig_md.buff.data7 = hdr.group11.data7;
-        hdr.group11.data7 = hdr.group10.data7;
-        hdr.group10.data7 = hdr.group9.data7;
-        hdr.group9.data7 = hdr.group8.data7;
-        hdr.group8.data7 = hdr.group7.data7;
-        hdr.group7.data7 = hdr.group6.data7;
-        hdr.group6.data7 = hdr.group5.data7;
-        hdr.group5.data7 = hdr.group4.data7;
-        hdr.group4.data7 = hdr.group3.data7;
-        hdr.group3.data7 = hdr.group2.data7;
-        hdr.group2.data7 = hdr.group1.data7;
-        hdr.group1.data7 = hdr.group0.data7;
-        ig_md.buff.data8[7:0] = hdr.group11.data8[7:0];
-        hdr.group11.data8[7:0] = hdr.group10.data8[7:0];
-        hdr.group10.data8[7:0] = hdr.group9.data8[7:0];
-        hdr.group9.data8[7:0] = hdr.group8.data8[7:0];
-        hdr.group8.data8[7:0] = hdr.group7.data8[7:0];
-        hdr.group7.data8[7:0] = hdr.group6.data8[7:0];
-        hdr.group6.data8[7:0] = hdr.group5.data8[7:0];
-        hdr.group5.data8[7:0] = hdr.group4.data8[7:0];
-        hdr.group4.data8[7:0] = hdr.group3.data8[7:0];
-        hdr.group3.data8[7:0] = hdr.group2.data8[7:0];
-        hdr.group2.data8[7:0] = hdr.group1.data8[7:0];
-        hdr.group1.data8[7:0] = hdr.group0.data8[7:0];
-        ig_md.buff.data8[15:8] = hdr.group11.data8[15:8];
-        hdr.group11.data8[15:8] = hdr.group10.data8[15:8];
-        hdr.group10.data8[15:8] = hdr.group9.data8[15:8];
-        hdr.group9.data8[15:8] = hdr.group8.data8[15:8];
-        hdr.group8.data8[15:8] = hdr.group7.data8[15:8];
-        hdr.group7.data8[15:8] = hdr.group6.data8[15:8];
-        hdr.group6.data8[15:8] = hdr.group5.data8[15:8];
-        hdr.group5.data8[15:8] = hdr.group4.data8[15:8];
-        hdr.group4.data8[15:8] = hdr.group3.data8[15:8];
-        hdr.group3.data8[15:8] = hdr.group2.data8[15:8];
-        hdr.group2.data8[15:8] = hdr.group1.data8[15:8];
-        hdr.group1.data8[15:8] = hdr.group0.data8[15:8];
     }
 
     table cluster7_bit0 {
@@ -531,17 +445,13 @@ control SwitchIngress(
         }
 
         actions = {
-            cluster7_bit0_00_action;
-            cluster7_bit0_01_action;
-            cluster7_bit0_10_action;
-            cluster7_bit0_11_action;
+            cluster7_bit0_0_action;
+            cluster7_bit0_1_action;
         }
-        const default_action = cluster7_bit0_00_action;
+        const default_action = cluster7_bit0_0_action;
         const entries = {
-            32w1 &&& 0x00000180 : cluster7_bit0_00_action();
-            32w2 &&& 0x00000180 : cluster7_bit0_01_action();
-            32w3 &&& 0x00000180 : cluster7_bit0_10_action();
-            32w4 &&& 0x00000180 : cluster7_bit0_11_action();
+            32w1 &&& 0x00000180 : cluster7_bit0_0_action();
+            32w2 &&& 0x00000180 : cluster7_bit0_1_action();
         }
         size = 4;
     }

@@ -32,18 +32,16 @@ header udp_h {
     bit<16> checksum;
 }
 
-@pa_container_size("ingress", "group1.data0", 32) @pa_container_size("ingress", "group1.data1", 32) @pa_container_size("ingress", "group1.data2", 32) @pa_container_size("ingress", "group1.data3", 16) @pa_container_size("ingress", "group1.data4", 16) @pa_container_size("ingress", "group1.data5", 16) @pa_container_size("ingress", "group1.data6", 16) @pa_container_size("ingress", "group1.data7", 16) @pa_container_size("ingress", "group1.data8", 8, 8) @pa_container_size("ingress", "group1.data9", 8, 8) 
+@pa_container_size("ingress", "group1.data0", 32) @pa_container_size("ingress", "group1.data1", 32) @pa_container_size("ingress", "group1.data2", 16) @pa_container_size("ingress", "group1.data3", 16) @pa_container_size("ingress", "group1.data4", 16) @pa_container_size("ingress", "group1.data5", 16) @pa_container_size("ingress", "group1.data6", 16) @pa_container_size("ingress", "group1.data7", 8, 8) 
 header data_group_h {
     bit<32> data0;
     bit<32> data1;
-    bit<32> data2;
+    bit<16> data2;
     bit<16> data3;
     bit<16> data4;
     bit<16> data5;
     bit<16> data6;
     bit<16> data7;
-    bit<16> data8;
-    bit<16> data9;
 }
 
 header key_buf_h {
@@ -55,14 +53,12 @@ header key_buf_h {
 header data_buf_h {
     bit<32> data0;
     bit<32> data1;
-    bit<32> data2;
+    bit<16> data2;
     bit<16> data3;
     bit<16> data4;
     bit<16> data5;
     bit<16> data6;
     bit<16> data7;
-    bit<16> data8;
-    bit<16> data9;
 }
 
 struct header_t {

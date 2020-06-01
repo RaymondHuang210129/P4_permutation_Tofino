@@ -13,6 +13,7 @@ typedef bit<16> cluster5_t;
 typedef bit<16> cluster6_t;
 typedef bit<16> cluster7_t;
 
+@pa_container_size("ingress", "ethernet.dstAddr", 8, 8, 8, 8, 8, 8)
 header ethernet_h {
     mac_addr_t dstAddr;
     mac_addr_t srcAddr;
