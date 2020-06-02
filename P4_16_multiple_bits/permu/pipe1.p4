@@ -257,7 +257,7 @@ control Pipe1SwitchIngress(
     }
 
     action cluster0_bit0_101_action() { // 1 -> 0//////////////////////
-        cluster0_t tmp = hdr.group0.data0
+        cluster0_t tmp = hdr.group0.data0;
         hdr.group0.data0 = hdr.group11.data0;
         hdr.group11.data0 = hdr.group9.data0;
         hdr.group9.data0 = hdr.group7.data0;
@@ -396,7 +396,7 @@ control Pipe1SwitchIngress(
     }
 
     action cluster1_bit0_101_action() { // 1 -> 0
-        cluster1_t tmp = hdr.group0.data1
+        cluster1_t tmp = hdr.group0.data1;
         hdr.group0.data1 = hdr.group11.data1;
         hdr.group11.data1 = hdr.group9.data1;
         hdr.group9.data1 = hdr.group7.data1;
@@ -535,7 +535,7 @@ control Pipe1SwitchIngress(
     }
 
     action cluster2_bit0_101_action() { // 1 -> 0
-        cluster2_t tmp = hdr.group0.data2
+        cluster2_t tmp = hdr.group0.data2;
         hdr.group0.data2 = hdr.group11.data2;
         hdr.group11.data2 = hdr.group9.data2;
         hdr.group9.data2 = hdr.group7.data2;
@@ -674,7 +674,7 @@ control Pipe1SwitchIngress(
     }
 
     action cluster3_bit0_101_action() { // 1 -> 0
-        cluster3_t tmp = hdr.group0.data3
+        cluster3_t tmp = hdr.group0.data3;
         hdr.group0.data3 = hdr.group11.data3;
         hdr.group11.data3 = hdr.group9.data3;
         hdr.group9.data3 = hdr.group7.data3;
@@ -813,7 +813,7 @@ control Pipe1SwitchIngress(
     }
 
     action cluster4_bit0_101_action() { // 1 -> 0
-        cluster4_t tmp = hdr.group0.data4
+        cluster4_t tmp = hdr.group0.data4;
         hdr.group0.data4 = hdr.group11.data4;
         hdr.group11.data4 = hdr.group9.data4;
         hdr.group9.data4 = hdr.group7.data4;
@@ -952,7 +952,7 @@ control Pipe1SwitchIngress(
     }
 
     action cluster5_bit0_101_action() { // 1 -> 0
-        cluster5_t tmp = hdr.group0.data5
+        cluster5_t tmp = hdr.group0.data5;
         hdr.group0.data5 = hdr.group11.data5;
         hdr.group11.data5 = hdr.group9.data5;
         hdr.group9.data5 = hdr.group7.data5;
@@ -1091,7 +1091,7 @@ control Pipe1SwitchIngress(
     }
 
     action cluster6_bit0_101_action() { // 1 -> 0
-        cluster6_t tmp = hdr.group0.data6
+        cluster6_t tmp = hdr.group0.data6;
         hdr.group0.data6 = hdr.group11.data6;
         hdr.group11.data6 = hdr.group9.data6;
         hdr.group9.data6 = hdr.group7.data6;
@@ -1230,7 +1230,7 @@ control Pipe1SwitchIngress(
     }
 
     action cluster7_bit0_101_action() { // 1 -> 0
-        cluster7_t tmp = hdr.group0.data7
+        cluster7_t tmp = hdr.group0.data7;
         hdr.group0.data7 = hdr.group11.data7;
         hdr.group11.data7 = hdr.group9.data7;
         hdr.group9.data7 = hdr.group7.data7;
