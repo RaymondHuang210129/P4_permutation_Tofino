@@ -8,6 +8,25 @@
 #include "common/headers.p4"
 #include "common/util.p4"
 
+#define _ACTION_BIT0_000(clst) action cluster## clst ##_bit0_000_action() {}
+
+#define _ACTION_BIT0_001(clst) action cluster## clst ##_bit0_001_action() {   \
+            cluster## clst ##_t tmp = hdr.group0.data## clst;                 \
+            hdr.group0.data## clst = hdr.group11.data## clst;                 \
+            hdr.group11.data## clst = hdr.group10.data## clst;                \
+            hdr.group10.data## clst = hdr.group9.data## clst;                 \
+            hdr.group9.data## clst = hdr.group8.data## clst;                  \
+            hdr.group8.data## clst = hdr.group7.data## clst;                  \
+            hdr.group7.data## clst = hdr.group6.data## clst;                  \
+            hdr.group6.data## clst = hdr.group5.data## clst;                  \
+            hdr.group5.data## clst = hdr.group4.data## clst;                  \
+            hdr.group4.data## clst = hdr.group3.data## clst;                  \
+            hdr.group3.data## clst = hdr.group2.data## clst;                  \
+            hdr.group2.data## clst = hdr.group1.data## clst;                  \
+            hdr.group1.data## clst = tmp;                                     \
+        }
+
+
 
 parser Pipe1SwitchIngressParser(
         packet_in pkt,
@@ -166,6 +185,7 @@ control Pipe1SwitchIngress(
 
     //-------------------- start of forwarding part
 
+
     action set_egr(PortId_t port) {
         ig_tm_md.ucast_egress_port = port;
     }
@@ -192,9 +212,10 @@ control Pipe1SwitchIngress(
 
     ////------ bit 0
 
-    action cluster0_bit0_000_action() {
-    }
-
+//    action cluster0_bit0_000_action() {
+//    }
+    _ACTION_BIT0_000(0)
+    
     action cluster0_bit0_001_action() { // 1 -> 0
         cluster0_t tmp = hdr.group0.data0;
         hdr.group0.data0 = hdr.group11.data0;
@@ -331,8 +352,9 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster1_bit0_000_action() {
-    }
+//    action cluster1_bit0_000_action() {
+//    }
+    _ACTION_BIT0_000(1)
 
     action cluster1_bit0_001_action() { // 1 -> 0
         cluster1_t tmp = hdr.group0.data1;
@@ -470,8 +492,9 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster2_bit0_000_action() {
-    }
+//    action cluster2_bit0_000_action() {
+//    }
+    _ACTION_BIT0_000(2)
 
     action cluster2_bit0_001_action() { // 1 -> 0
         cluster2_t tmp = hdr.group0.data2;
@@ -609,8 +632,9 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster3_bit0_000_action() {
-    }
+//    action cluster3_bit0_000_action() {
+//    }
+    _ACTION_BIT0_000(3)
 
     action cluster3_bit0_001_action() { // 1 -> 0
         cluster3_t tmp = hdr.group0.data3;
@@ -748,8 +772,9 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster4_bit0_000_action() {
-    }
+//    action cluster4_bit0_000_action() {
+//    }
+    _ACTION_BIT0_000(4)
 
     action cluster4_bit0_001_action() { // 1 -> 0
         cluster4_t tmp = hdr.group0.data4;
@@ -887,8 +912,9 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster5_bit0_000_action() {
-    }
+//    action cluster5_bit0_000_action() {
+//    }
+    _ACTION_BIT0_000(5)
 
     action cluster5_bit0_001_action() { // 1 -> 0
         cluster5_t tmp = hdr.group0.data5;
@@ -1026,8 +1052,9 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster6_bit0_000_action() {
-    }
+//    action cluster6_bit0_000_action() {
+//    }
+    _ACTION_BIT0_000(6)
 
     action cluster6_bit0_001_action() { // 1 -> 0
         cluster6_t tmp = hdr.group0.data6;
@@ -1165,8 +1192,9 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster7_bit0_000_action() {
-    }
+//    action cluster7_bit0_000_action() {
+//    }
+    _ACTION_BIT0_000(7)
 
     action cluster7_bit0_001_action() { // 1 -> 0
         cluster7_t tmp = hdr.group0.data7;
