@@ -369,6 +369,26 @@ control Pipe1SwitchIngress(
     _ACTION_BIT0_111(6)
     _ACTION_BIT0_111(7)
 
+    #define _TABLE_MATCH(k_idx, b_idx, clst) table cluster## clst ##_bit## b_idx { \
+            key = {                                                                \
+                ig_md.key.code## k_idx : ternary;                                  \
+            }                                                                      \
+            actions = {                                                            \
+                cluster## clst ##_bit## b_idx ##_000_action;                       \
+                cluster## clst ##_bit## b_idx ##_001_action;                       \
+                cluster## clst ##_bit## b_idx ##_010_action;                       \
+                cluster## clst ##_bit## b_idx ##_011_action;                       \
+                cluster## clst ##_bit## b_idx ##_100_action;                       \
+                cluster## clst ##_bit## b_idx ##_101_action;                       \
+                cluster## clst ##_bit## b_idx ##_110_action;                       \
+                cluster## clst ##_bit## b_idx ##_111_action;                       \
+            }                                                                      \
+            const default_action = cluster## clst ##_bit## b_idx ##_000_action;    \
+            size = 4;                                                              \
+        }
+
+    _TABLE_MATCH(0, 0, 0)
+/*
     table cluster0_bit0 {
         key = {
             ig_md.key.code0 : ternary;
@@ -393,7 +413,7 @@ control Pipe1SwitchIngress(
         }
         size = 4;
     }
-
+*/
     table cluster1_bit0 {
         key = {
             ig_md.key.code0 : ternary;
