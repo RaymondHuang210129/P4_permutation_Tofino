@@ -344,7 +344,7 @@ control Pipe1SwitchIngress(
     _ACTION_BIT0_110(6)
     _ACTION_BIT0_110(7)
 
-    #define _ACTION_BIT0_110(clst) action cluster## clst ##_bit0_110_action() { \
+    #define _ACTION_BIT0_111(clst) action cluster## clst ##_bit0_111_action() { \
             cluster## clst ##_t tmp = hdr.group0.data## clst ;                  \
             hdr.group0.data## clst = hdr.group11.data## clst ;                  \
             hdr.group11.data## clst = hdr.group8.data## clst ;                  \
