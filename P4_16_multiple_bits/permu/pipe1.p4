@@ -226,20 +226,28 @@ control Pipe1SwitchIngress(
     _ACTION_BIT0_001(6)
     _ACTION_BIT0_001(7)
 
-    action cluster0_bit0_010_action() { // 0 -> 1
-        cluster0_t tmp = hdr.group1.data0;
-        hdr.group1.data0 = hdr.group11.data0;
-        hdr.group11.data0 = hdr.group10.data0;
-        hdr.group10.data0 = hdr.group9.data0;
-        hdr.group9.data0 = hdr.group8.data0;
-        hdr.group8.data0 = hdr.group7.data0;
-        hdr.group7.data0 = hdr.group6.data0;
-        hdr.group6.data0 = hdr.group5.data0;
-        hdr.group5.data0 = hdr.group4.data0;
-        hdr.group4.data0 = hdr.group3.data0;
-        hdr.group3.data0 = hdr.group2.data0;
-        hdr.group2.data0 = tmp;
-    }
+    #define _ACTION_BIT0_010(clst) action cluster## clst ##_bit0_010_action() { \
+            cluster## clst ##_t tmp = hdr.group1.data## clst ;                  \
+            hdr.group1.data## clst = hdr.group11.data## clst ;                  \
+            hdr.group11.data## clst = hdr.group10.data## clst ;                 \
+            hdr.group10.data## clst = hdr.group9.data## clst ;                  \
+            hdr.group9.data## clst = hdr.group8.data## clst ;                   \
+            hdr.group8.data## clst = hdr.group7.data## clst ;                   \
+            hdr.group7.data## clst = hdr.group6.data## clst ;                   \
+            hdr.group6.data## clst = hdr.group5.data## clst ;                   \
+            hdr.group5.data## clst = hdr.group4.data## clst ;                   \
+            hdr.group4.data## clst = hdr.group3.data## clst ;                   \
+            hdr.group3.data## clst = hdr.group2.data## clst ;                   \
+            hdr.group2.data## clst = tmp;                                       \
+        }
+    _ACTION_BIT0_010(0)
+    _ACTION_BIT0_010(1)
+    _ACTION_BIT0_010(2)
+    _ACTION_BIT0_010(3)
+    _ACTION_BIT0_010(4)
+    _ACTION_BIT0_010(5)
+    _ACTION_BIT0_010(6)
+    _ACTION_BIT0_010(7)
 
     action cluster0_bit0_011_action() { // 1 -> 1
         cluster0_t tmp = hdr.group0.data0;
@@ -344,21 +352,6 @@ control Pipe1SwitchIngress(
             0x00000003 &&& 0x00000003 : cluster0_bit0_011_action();
         }
         size = 4;
-    }
-
-    action cluster1_bit0_010_action() { // 0 -> 1
-        cluster1_t tmp = hdr.group1.data1;
-        hdr.group1.data1 = hdr.group11.data1;
-        hdr.group11.data1 = hdr.group10.data1;
-        hdr.group10.data1 = hdr.group9.data1;
-        hdr.group9.data1 = hdr.group8.data1;
-        hdr.group8.data1 = hdr.group7.data1;
-        hdr.group7.data1 = hdr.group6.data1;
-        hdr.group6.data1 = hdr.group5.data1;
-        hdr.group5.data1 = hdr.group4.data1;
-        hdr.group4.data1 = hdr.group3.data1;
-        hdr.group3.data1 = hdr.group2.data1;
-        hdr.group2.data1 = tmp;
     }
 
     action cluster1_bit0_011_action() { // 1 -> 1
@@ -466,21 +459,6 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster2_bit0_010_action() { // 0 -> 1
-        cluster2_t tmp = hdr.group1.data2;
-        hdr.group1.data2 = hdr.group11.data2;
-        hdr.group11.data2 = hdr.group10.data2;
-        hdr.group10.data2 = hdr.group9.data2;
-        hdr.group9.data2 = hdr.group8.data2;
-        hdr.group8.data2 = hdr.group7.data2;
-        hdr.group7.data2 = hdr.group6.data2;
-        hdr.group6.data2 = hdr.group5.data2;
-        hdr.group5.data2 = hdr.group4.data2;
-        hdr.group4.data2 = hdr.group3.data2;
-        hdr.group3.data2 = hdr.group2.data2;
-        hdr.group2.data2 = tmp;
-    }
-
     action cluster2_bit0_011_action() { // 1 -> 1
         cluster2_t tmp = hdr.group0.data2;
         hdr.group0.data2 = hdr.group11.data2;
@@ -584,21 +562,6 @@ control Pipe1SwitchIngress(
             0x00000030 &&& 0x00000030 : cluster2_bit0_011_action();
         }
         size = 4;
-    }
-
-    action cluster3_bit0_010_action() { // 0 -> 1
-        cluster3_t tmp = hdr.group1.data3;
-        hdr.group1.data3 = hdr.group11.data3;
-        hdr.group11.data3 = hdr.group10.data3;
-        hdr.group10.data3 = hdr.group9.data3;
-        hdr.group9.data3 = hdr.group8.data3;
-        hdr.group8.data3 = hdr.group7.data3;
-        hdr.group7.data3 = hdr.group6.data3;
-        hdr.group6.data3 = hdr.group5.data3;
-        hdr.group5.data3 = hdr.group4.data3;
-        hdr.group4.data3 = hdr.group3.data3;
-        hdr.group3.data3 = hdr.group2.data3;
-        hdr.group2.data3 = tmp;
     }
 
     action cluster3_bit0_011_action() { // 1 -> 1
@@ -706,21 +669,6 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster4_bit0_010_action() { // 0 -> 1
-        cluster4_t tmp = hdr.group1.data4;
-        hdr.group1.data4 = hdr.group11.data4;
-        hdr.group11.data4 = hdr.group10.data4;
-        hdr.group10.data4 = hdr.group9.data4;
-        hdr.group9.data4 = hdr.group8.data4;
-        hdr.group8.data4 = hdr.group7.data4;
-        hdr.group7.data4 = hdr.group6.data4;
-        hdr.group6.data4 = hdr.group5.data4;
-        hdr.group5.data4 = hdr.group4.data4;
-        hdr.group4.data4 = hdr.group3.data4;
-        hdr.group3.data4 = hdr.group2.data4;
-        hdr.group2.data4 = tmp;
-    }
-
     action cluster4_bit0_011_action() { // 1 -> 1
         cluster4_t tmp = hdr.group0.data4;
         hdr.group0.data4 = hdr.group11.data4;
@@ -824,21 +772,6 @@ control Pipe1SwitchIngress(
             0x00000300 &&& 0x00000300 : cluster4_bit0_011_action();
         }
         size = 4;
-    }
-
-    action cluster5_bit0_010_action() { // 0 -> 1
-        cluster5_t tmp = hdr.group1.data5;
-        hdr.group1.data5 = hdr.group11.data5;
-        hdr.group11.data5 = hdr.group10.data5;
-        hdr.group10.data5 = hdr.group9.data5;
-        hdr.group9.data5 = hdr.group8.data5;
-        hdr.group8.data5 = hdr.group7.data5;
-        hdr.group7.data5 = hdr.group6.data5;
-        hdr.group6.data5 = hdr.group5.data5;
-        hdr.group5.data5 = hdr.group4.data5;
-        hdr.group4.data5 = hdr.group3.data5;
-        hdr.group3.data5 = hdr.group2.data5;
-        hdr.group2.data5 = tmp;
     }
 
     action cluster5_bit0_011_action() { // 1 -> 1
@@ -946,21 +879,6 @@ control Pipe1SwitchIngress(
         size = 4;
     }
 
-    action cluster6_bit0_010_action() { // 0 -> 1
-        cluster6_t tmp = hdr.group1.data6;
-        hdr.group1.data6 = hdr.group11.data6;
-        hdr.group11.data6 = hdr.group10.data6;
-        hdr.group10.data6 = hdr.group9.data6;
-        hdr.group9.data6 = hdr.group8.data6;
-        hdr.group8.data6 = hdr.group7.data6;
-        hdr.group7.data6 = hdr.group6.data6;
-        hdr.group6.data6 = hdr.group5.data6;
-        hdr.group5.data6 = hdr.group4.data6;
-        hdr.group4.data6 = hdr.group3.data6;
-        hdr.group3.data6 = hdr.group2.data6;
-        hdr.group2.data6 = tmp;
-    }
-
     action cluster6_bit0_011_action() { // 1 -> 1
         cluster6_t tmp = hdr.group0.data6;
         hdr.group0.data6 = hdr.group11.data6;
@@ -1064,21 +982,6 @@ control Pipe1SwitchIngress(
             0x00003000 &&& 0x00003000 : cluster6_bit0_011_action();
         }
         size = 4;
-    }
-
-    action cluster7_bit0_010_action() { // 0 -> 1
-        cluster7_t tmp = hdr.group1.data7;
-        hdr.group1.data7 = hdr.group11.data7;
-        hdr.group11.data7 = hdr.group10.data7;
-        hdr.group10.data7 = hdr.group9.data7;
-        hdr.group9.data7 = hdr.group8.data7;
-        hdr.group8.data7 = hdr.group7.data7;
-        hdr.group7.data7 = hdr.group6.data7;
-        hdr.group6.data7 = hdr.group5.data7;
-        hdr.group5.data7 = hdr.group4.data7;
-        hdr.group4.data7 = hdr.group3.data7;
-        hdr.group3.data7 = hdr.group2.data7;
-        hdr.group2.data7 = tmp;
     }
 
     action cluster7_bit0_011_action() { // 1 -> 1
