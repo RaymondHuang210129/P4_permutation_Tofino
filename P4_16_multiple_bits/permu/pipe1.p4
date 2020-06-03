@@ -616,7 +616,7 @@ control Pipe1SwitchIngress(
     apply {
         //---stage 0
         ig_md.key.code0 = read_key_0_ra.execute(0);
-        ig_md.key.code1 = read_key_1_ra.execute(0);
+        
         ig_md.key.code2 = read_key_2_ra.execute(0);
         forward.apply();
         //---stage 1
@@ -628,6 +628,7 @@ control Pipe1SwitchIngress(
         cluster5_bit0.apply();
         cluster6_bit0.apply();
         cluster7_bit0.apply();
+        ig_md.key.code1 = read_key_1_ra.execute(0);
         //---stage 2
         cluster0_bit3.apply();
         cluster1_bit3.apply();
