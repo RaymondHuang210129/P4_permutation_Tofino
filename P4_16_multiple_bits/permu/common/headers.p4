@@ -59,6 +59,7 @@ header key_buf_h {
     bit<32> code1;
     bit<32> code2;
     bit<32> code3;
+    bit<32> code4;
 }
 
 @padding
