@@ -91,6 +91,10 @@ struct pipe1_header_t {
     data_group_h group9;
     data_group_h group10;
     data_group_h group11;
+    data_group_h group12;
+    data_group_h group13;
+    data_group_h group14;
+    data_group_h group15;
 }
 
 struct pipe2_header_t {
