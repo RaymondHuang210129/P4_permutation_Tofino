@@ -1005,14 +1005,14 @@ control Pipe1SwitchIngress(
             hdr.group13.data## clst = hdr.group14.data## clst ;                   \
             hdr.group14.data## clst = tmp2;                                       \
         }
-    _ACTION_BIT9_111(0)
-    _ACTION_BIT9_111(1)
-    _ACTION_BIT9_111(2)
-    _ACTION_BIT9_111(3)
-    _ACTION_BIT9_111(4)
-    _ACTION_BIT9_111(5)
-    _ACTION_BIT9_111(6)
-    _ACTION_BIT9_111(7)
+    _ACTION_BIT12_111(0)
+    _ACTION_BIT12_111(1)
+    _ACTION_BIT12_111(2)
+    _ACTION_BIT12_111(3)
+    _ACTION_BIT12_111(4)
+    _ACTION_BIT12_111(5)
+    _ACTION_BIT12_111(6)
+    _ACTION_BIT12_111(7)
 
     #define _TABLE_MATCH(k_idx, b_idx, clst) table cluster## clst ##_bit## b_idx { \
             key = {                                                                \
