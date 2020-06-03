@@ -605,14 +605,14 @@ control Pipe1SwitchIngress(
     _TABLE_MATCH(0, 0, 5)
     _TABLE_MATCH(0, 0, 6)
     _TABLE_MATCH(0, 0, 7)
-    _TABLE_MATCH(1, 1, 0)
-    _TABLE_MATCH(1, 1, 1)
-    _TABLE_MATCH(1, 1, 2)
-    _TABLE_MATCH(1, 1, 3)
-    _TABLE_MATCH(1, 1, 4)
-    _TABLE_MATCH(1, 1, 5)
-    _TABLE_MATCH(1, 1, 6)
-    _TABLE_MATCH(1, 1, 7)
+    _TABLE_MATCH(1, 3, 0)
+    _TABLE_MATCH(1, 3, 1)
+    _TABLE_MATCH(1, 3, 2)
+    _TABLE_MATCH(1, 3, 3)
+    _TABLE_MATCH(1, 3, 4)
+    _TABLE_MATCH(1, 3, 5)
+    _TABLE_MATCH(1, 3, 6)
+    _TABLE_MATCH(1, 3, 7)
 
     apply {
         //---stage 0
