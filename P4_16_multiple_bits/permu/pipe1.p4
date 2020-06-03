@@ -630,14 +630,14 @@ control Pipe1SwitchIngress(
         cluster6_bit0.apply();
         cluster7_bit0.apply();
         //---stage 2
-        cluster0_bit1.apply();
-        cluster1_bit1.apply();
-        cluster2_bit1.apply();
-        cluster3_bit1.apply();
-        cluster4_bit1.apply();
-        cluster5_bit1.apply();
-        cluster6_bit1.apply();
-        cluster7_bit1.apply();
+        cluster0_bit3.apply();
+        cluster1_bit3.apply();
+        cluster2_bit3.apply();
+        cluster3_bit3.apply();
+        cluster4_bit3.apply();
+        cluster5_bit3.apply();
+        cluster6_bit3.apply();
+        cluster7_bit3.apply();
 /*
         //---stage 3
         cluster0_bit2.apply();
