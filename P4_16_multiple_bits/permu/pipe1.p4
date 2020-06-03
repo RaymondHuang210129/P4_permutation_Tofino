@@ -141,6 +141,7 @@ control Pipe1SwitchIngress(
     Register<bit<32>, bit<32>>(32w1, 32w0) key_reg_0;
     Register<bit<32>, bit<32>>(32w1, 32w0) key_reg_1;
     Register<bit<32>, bit<32>>(32w1, 32w0) key_reg_2;
+    Register<bit<32>, bit<32>>(32w1, 32w0) key_reg_3;
 
     RegisterAction<bit<32>, bit<1>, bit<32>>(key_reg_0) read_key_0_ra = {
         void apply(inout bit<32> val, out bit<32> ret) {
@@ -155,6 +156,12 @@ control Pipe1SwitchIngress(
     };
 
     RegisterAction<bit<32>, bit<1>, bit<32>>(key_reg_2) read_key_2_ra = {
+        void apply(inout bit<32> val, out bit<32> ret) {
+            ret = val;
+        }
+    };
+
+    RegisterAction<bit<32>, bit<1>, bit<32>>(key_reg_3) read_key_3_ra = {
         void apply(inout bit<32> val, out bit<32> ret) {
             ret = val;
         }
@@ -579,6 +586,170 @@ control Pipe1SwitchIngress(
     _ACTION_BIT3_111(6)
     _ACTION_BIT3_111(7)
 
+    #define _ACTION_BIT6_000(clst) action cluster## clst ##_bit6_000_action() {}
+    _ACTION_BIT6_000(0)
+    _ACTION_BIT6_000(1)
+    _ACTION_BIT6_000(2)
+    _ACTION_BIT6_000(3)
+    _ACTION_BIT6_000(4)
+    _ACTION_BIT6_000(5)
+    _ACTION_BIT6_000(6)
+    _ACTION_BIT6_000(7)
+
+    #define _ACTION_BIT6_001(clst) action cluster## clst ##_bit6_001_action() { \
+            cluster## clst ##_t tmp = hdr.group6.data## clst ;                  \
+            hdr.group6.data## clst = hdr.group15.data## clst ;                  \
+            hdr.group15.data## clst = hdr.group14.data## clst ;                 \
+            hdr.group14.data## clst = hdr.group13.data## clst ;                 \
+            hdr.group13.data## clst = hdr.group12.data## clst ;                 \
+            hdr.group12.data## clst = hdr.group11.data## clst ;                 \
+            hdr.group11.data## clst = hdr.group10.data## clst ;                 \
+            hdr.group10.data## clst = hdr.group9.data## clst ;                  \
+            hdr.group9.data## clst = hdr.group8.data## clst ;                   \
+            hdr.group8.data## clst = hdr.group7.data## clst ;                   \
+            hdr.group7.data## clst = tmp;                                       \
+        }
+    _ACTION_BIT6_001(0)
+    _ACTION_BIT6_001(1)
+    _ACTION_BIT6_001(2)
+    _ACTION_BIT6_001(3)
+    _ACTION_BIT6_001(4)
+    _ACTION_BIT6_001(5)
+    _ACTION_BIT6_001(6)
+    _ACTION_BIT6_001(7)
+
+    #define _ACTION_BIT6_010(clst) action cluster## clst ##_bit6_010_action() { \
+            cluster## clst ##_t tmp = hdr.group7.data## clst ;                  \
+            hdr.group7.data## clst = hdr.group15.data## clst ;                  \
+            hdr.group15.data## clst = hdr.group14.data## clst ;                 \
+            hdr.group14.data## clst = hdr.group13.data## clst ;                 \
+            hdr.group13.data## clst = hdr.group12.data## clst ;                 \
+            hdr.group12.data## clst = hdr.group11.data## clst ;                 \
+            hdr.group11.data## clst = hdr.group10.data## clst ;                 \
+            hdr.group10.data## clst = hdr.group9.data## clst ;                  \
+            hdr.group9.data## clst = hdr.group8.data## clst ;                   \
+            hdr.group8.data## clst = tmp;                                       \
+        }
+    _ACTION_BIT6_010(0)
+    _ACTION_BIT6_010(1)
+    _ACTION_BIT6_010(2)
+    _ACTION_BIT6_010(3)
+    _ACTION_BIT6_010(4)
+    _ACTION_BIT6_010(5)
+    _ACTION_BIT6_010(6)
+    _ACTION_BIT6_010(7)
+
+    #define _ACTION_BIT6_011(clst) action cluster## clst ##_bit6_011_action() { \
+            cluster## clst ##_t tmp = hdr.group6.data## clst ;                  \
+            hdr.group6.data## clst = hdr.group15.data## clst ;                  \
+            hdr.group15.data## clst = hdr.group13.data## clst ;                 \
+            hdr.group13.data## clst = hdr.group11.data## clst ;                 \
+            hdr.group11.data## clst = hdr.group9.data## clst ;                  \
+            hdr.group9.data## clst = hdr.group7.data## clst ;                   \
+            hdr.group7.data## clst = hdr.group14.data## clst ;                  \
+            hdr.group14.data## clst = hdr.group12.data## clst ;                 \
+            hdr.group12.data## clst = hdr.group10.data## clst ;                 \
+            hdr.group10.data## clst = hdr.group8.data## clst ;                  \
+            hdr.group8.data## clst = tmp;                                       \
+        }
+    _ACTION_BIT6_011(0)
+    _ACTION_BIT6_011(1)
+    _ACTION_BIT6_011(2)
+    _ACTION_BIT6_011(3)
+    _ACTION_BIT6_011(4)
+    _ACTION_BIT6_011(5)
+    _ACTION_BIT6_011(6)
+    _ACTION_BIT6_011(7)
+
+    #define _ACTION_BIT6_100(clst) action cluster## clst ##_bit6_100_action() { \
+            cluster## clst ##_t tmp = hdr.group8.data## clst ;                  \
+            hdr.group8.data## clst = hdr.group15.data## clst ;                  \
+            hdr.group15.data## clst = hdr.group14.data## clst ;                 \
+            hdr.group14.data## clst = hdr.group13.data## clst ;                 \
+            hdr.group13.data## clst = hdr.group12.data## clst ;                 \
+            hdr.group12.data## clst = hdr.group11.data## clst ;                 \
+            hdr.group11.data## clst = hdr.group10.data## clst ;                 \
+            hdr.group10.data## clst = hdr.group9.data## clst ;                  \
+            hdr.group9.data## clst = tmp;                                       \
+        }
+    _ACTION_BIT6_100(0)
+    _ACTION_BIT6_100(1)
+    _ACTION_BIT6_100(2)
+    _ACTION_BIT6_100(3)
+    _ACTION_BIT6_100(4)
+    _ACTION_BIT6_100(5)
+    _ACTION_BIT6_100(6)
+    _ACTION_BIT6_100(7)
+
+    #define _ACTION_BIT6_101(clst) action cluster## clst ##_bit6_101_action() { \
+            cluster## clst ##_t tmp = hdr.group6.data## clst ;                  \
+            hdr.group6.data## clst = hdr.group15.data## clst ;                  \
+            hdr.group15.data## clst = hdr.group13.data## clst ;                 \
+            hdr.group13.data## clst = hdr.group11.data## clst ;                 \
+            hdr.group11.data## clst = hdr.group9.data## clst ;                  \
+            hdr.group9.data## clst = hdr.group7.data## clst ;                   \
+            hdr.group7.data## clst = tmp;                                       \
+            cluster## clst ##_t tmp2 = hdr.group8.data## clst ;                 \
+            hdr.group8.data## clst = hdr.group14.data## clst ;                  \
+            hdr.group14.data## clst = hdr.group12.data## clst ;                 \
+            hdr.group12.data## clst = hdr.group10.data## clst ;                 \
+            hdr.group10.data## clst = tmp2;                                     \
+        }
+    _ACTION_BIT6_101(0)
+    _ACTION_BIT6_101(1)
+    _ACTION_BIT6_101(2)
+    _ACTION_BIT6_101(3)
+    _ACTION_BIT6_101(4)
+    _ACTION_BIT6_101(5)
+    _ACTION_BIT6_101(6)
+    _ACTION_BIT6_101(7)
+
+    #define _ACTION_BIT6_110(clst) action cluster## clst ##_bit6_110_action() { \
+            cluster## clst ##_t tmp = hdr.group7.data## clst ;                  \
+            hdr.group7.data## clst = hdr.group15.data## clst ;                  \
+            hdr.group15.data## clst = hdr.group13.data## clst ;                 \
+            hdr.group13.data## clst = hdr.group11.data## clst ;                 \
+            hdr.group11.data## clst = hdr.group9.data## clst ;                  \
+            hdr.group9.data## clst = tmp;                                       \
+            cluster## clst ##_t tmp2 = hdr.group8.data## clst ;                 \
+            hdr.group8.data## clst = hdr.group14.data## clst ;                  \
+            hdr.group14.data## clst = hdr.group12.data## clst ;                 \
+            hdr.group12.data## clst = hdr.group10.data## clst ;                 \
+            hdr.group10.data## clst = tmp2;                                     \
+        }
+    _ACTION_BIT6_110(0)
+    _ACTION_BIT6_110(1)
+    _ACTION_BIT6_110(2)
+    _ACTION_BIT6_110(3)
+    _ACTION_BIT6_110(4)
+    _ACTION_BIT6_110(5)
+    _ACTION_BIT6_110(6)
+    _ACTION_BIT6_110(7)
+
+    #define _ACTION_BIT6_111(clst) action cluster## clst ##_bit6_111_action() { \
+            cluster## clst ##_t tmp = hdr.group6.data## clst ;                  \
+            hdr.group6.data## clst = hdr.group15.data## clst ;                  \
+            hdr.group15.data## clst = hdr.group12.data## clst ;                 \
+            hdr.group12.data## clst = hdr.group9.data## clst ;                  \
+            hdr.group9.data## clst = tmp;                                       \
+            cluster## clst ##_t tmp2 = hdr.group7.data## clst ;                 \
+            hdr.group7.data## clst = hdr.group14.data## clst ;                  \
+            hdr.group14.data## clst = hdr.group11.data## clst ;                 \
+            hdr.group11.data## clst = hdr.group8.data## clst ;                  \
+            hdr.group8.data## clst = hdr.group5.data## clst ;                   \
+            hdr.group5.data## clst = hdr.group13.data## clst ;                  \
+            hdr.group13.data## clst = hdr.group10.data## clst ;                 \
+            hdr.group10.data## clst = tmp2;                                     \
+        }
+    _ACTION_BIT6_111(0)
+    _ACTION_BIT6_111(1)
+    _ACTION_BIT6_111(2)
+    _ACTION_BIT6_111(3)
+    _ACTION_BIT6_111(4)
+    _ACTION_BIT6_111(5)
+    _ACTION_BIT6_111(6)
+    _ACTION_BIT6_111(7)
+
     #define _TABLE_MATCH(k_idx, b_idx, clst) table cluster## clst ##_bit## b_idx { \
             key = {                                                                \
                 ig_md.key.code## k_idx : ternary;                                  \
@@ -612,12 +783,21 @@ control Pipe1SwitchIngress(
     _TABLE_MATCH(1, 3, 5)
     _TABLE_MATCH(1, 3, 6)
     _TABLE_MATCH(1, 3, 7)
+    _TABLE_MATCH(2, 6, 0)
+    _TABLE_MATCH(2, 6, 1)
+    _TABLE_MATCH(2, 6, 2)
+    _TABLE_MATCH(2, 6, 3)
+    _TABLE_MATCH(2, 6, 4)
+    _TABLE_MATCH(2, 6, 5)
+    _TABLE_MATCH(2, 6, 6)
+    _TABLE_MATCH(2, 6, 7)
 
     apply {
         //---stage 0
         ig_md.key.code0 = read_key_0_ra.execute(0);
-        
+        ig_md.key.code1 = read_key_1_ra.execute(0);
         ig_md.key.code2 = read_key_2_ra.execute(0);
+        ig_md.key.code2 = read_key_3_ra.execute(0);
         forward.apply();
         //---stage 1
         cluster0_bit0.apply();
@@ -628,7 +808,6 @@ control Pipe1SwitchIngress(
         cluster5_bit0.apply();
         cluster6_bit0.apply();
         cluster7_bit0.apply();
-        ig_md.key.code1 = read_key_1_ra.execute(0);
         //---stage 2
         cluster0_bit3.apply();
         cluster1_bit3.apply();
@@ -638,16 +817,16 @@ control Pipe1SwitchIngress(
         cluster5_bit3.apply();
         cluster6_bit3.apply();
         cluster7_bit3.apply();
-/*
         //---stage 3
-        cluster0_bit2.apply();
-        cluster1_bit2.apply();
-        cluster2_bit2.apply();
-        cluster3_bit2.apply();
-        cluster4_bit2.apply();
-        cluster5_bit2.apply();
-        cluster6_bit2.apply();
-        cluster7_bit2.apply();
+        cluster0_bit6.apply();
+        cluster1_bit6.apply();
+        cluster2_bit6.apply();
+        cluster3_bit6.apply();
+        cluster4_bit6.apply();
+        cluster5_bit6.apply();
+        cluster6_bit6.apply();
+        cluster7_bit6.apply();
+/*
         //---stage 4
         cluster0_bit3.apply();
         cluster1_bit3.apply();
