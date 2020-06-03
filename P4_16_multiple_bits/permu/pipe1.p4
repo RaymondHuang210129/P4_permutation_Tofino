@@ -565,8 +565,7 @@ control Pipe1SwitchIngress(
             hdr.group14.data## clst = hdr.group11.data## clst ;                 \
             hdr.group11.data## clst = hdr.group8.data## clst ;                  \
             hdr.group8.data## clst = hdr.group5.data## clst ;                   \
-            hdr.group5.data## clst = hdr.group2.data## clst ;                   \
-            hdr.group2.data## clst = hdr.group13.data## clst ;                  \
+            hdr.group5.data## clst = hdr.group13.data## clst ;                  \
             hdr.group13.data## clst = hdr.group10.data## clst ;                 \
             hdr.group10.data## clst = hdr.group7.data## clst ;                  \
             hdr.group7.data## clst = tmp2;                                      \
