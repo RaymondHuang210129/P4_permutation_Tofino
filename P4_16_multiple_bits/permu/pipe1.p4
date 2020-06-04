@@ -42,91 +42,76 @@ parser Pipe1SwitchIngressParser(
         transition parse_group_1;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_1 {
         pkt.extract(hdr.group1);
         transition parse_group_2;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_2 {
         pkt.extract(hdr.group2);
         transition parse_group_3;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_3 {
         pkt.extract(hdr.group3);
         transition parse_group_4;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_4 {
         pkt.extract(hdr.group4);
         transition parse_group_5;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_5 {
         pkt.extract(hdr.group5);
         transition parse_group_6;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_6 {
         pkt.extract(hdr.group6);
         transition parse_group_7;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_7 {
         pkt.extract(hdr.group7);
         transition parse_group_8;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_8 {
         pkt.extract(hdr.group8);
         transition parse_group_9;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_9 {
         pkt.extract(hdr.group9);
         transition parse_group_10;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_10 {
         pkt.extract(hdr.group10);
         transition parse_group_11;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_11 {
         pkt.extract(hdr.group11);
         transition parse_group_12;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_12 {
         pkt.extract(hdr.group12);
         transition parse_group_13;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_13 {
         pkt.extract(hdr.group13);
         transition parse_group_14;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_14 {
         pkt.extract(hdr.group14);
         transition parse_group_15;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_15 {
         pkt.extract(hdr.group15);
         transition accept;
