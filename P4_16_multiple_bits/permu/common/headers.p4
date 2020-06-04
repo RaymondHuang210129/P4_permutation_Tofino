@@ -62,21 +62,18 @@ header key_buf_h {
     bit<32> code4;
 }
 
-
+@__intrinsic_metadata
 header pipe2_ignore_h {
-    bit<8> pad;
     @padding bit<2808> data;
 }
 
-
+@__intrinsic_metadata
 header pipe3_ignore_h {
-    bit<8> pad;
     @padding bit<5624> data;
 }
 
-
+@__intrinsic_metadata
 header pipe4_ignore_h {
-    bit<8> pad;
     @padding bit<8440> data;
 }
 
