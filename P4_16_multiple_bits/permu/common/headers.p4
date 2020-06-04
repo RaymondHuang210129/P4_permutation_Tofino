@@ -64,17 +64,20 @@ header key_buf_h {
 
 
 header pipe2_ignore_h {
-    @padding bit<2816> data;
+    bit<8> pad;
+    @padding bit<2808> data;
 }
 
 
 header pipe3_ignore_h {
-    @padding bit<5632> data;
+    bit<8> pad;
+    @padding bit<5624> data;
 }
 
 
 header pipe4_ignore_h {
-    @padding bit<8448> data;
+    bit<8> pad;
+    @padding bit<8440> data;
 }
 
 struct pipe1_header_t {
