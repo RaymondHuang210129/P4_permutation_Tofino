@@ -10,7 +10,7 @@
 
 parser Pipe1SwitchIngressParser(
         packet_in pkt,
-        out pipe2_header_t hdr,
+        out pipe1_header_t hdr,
         out metadata_t ig_md,
         out ingress_intrinsic_metadata_t ig_intr_md) {
 
@@ -33,10 +33,14 @@ parser Pipe1SwitchIngressParser(
 
     state parse_udp {
         pkt.extract(hdr.udp);
+        transition parse_ignore;
+    }
+
+    state parse_ignore {
+        pkt.advance(2816);
         transition parse_group_0;
     }
 
-    @force_shift("ingress", 2816)
     state parse_group_0 {
         pkt.extract(hdr.group0);
         transition parse_group_1;
@@ -120,7 +124,7 @@ parser Pipe1SwitchIngressParser(
 
 control Pipe1SwitchIngressDeparser(
         packet_out pkt,
-        inout pipe2_header_t hdr,
+        inout pipe1_header_t hdr,
         in metadata_t ig_md,
         in ingress_intrinsic_metadata_for_deparser_t ig_dprsr_md) {
 
@@ -130,7 +134,7 @@ control Pipe1SwitchIngressDeparser(
 }
 
 control Pipe1SwitchIngress(
-        inout pipe2_header_t hdr,
+        inout pipe1_header_t hdr,
         inout metadata_t ig_md,
         in ingress_intrinsic_metadata_t ig_intr_md,
         in ingress_intrinsic_metadata_from_parser_t ig_prsr_md,
