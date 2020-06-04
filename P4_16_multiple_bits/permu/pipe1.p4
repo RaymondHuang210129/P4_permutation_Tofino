@@ -33,14 +33,10 @@ parser Pipe1SwitchIngressParser(
 
     state parse_udp {
         pkt.extract(hdr.udp);
-        transition parse_ignore;
-    }
-
-    state parse_ignore {
-        pkt.extract(hdr.ignore);
         transition parse_group_0;
     }
 
+    @force_shift("ingress", 2816)
     state parse_group_0 {
         pkt.extract(hdr.group0);
         transition parse_group_1;
