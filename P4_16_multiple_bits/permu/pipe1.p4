@@ -10,7 +10,7 @@
 
 parser Pipe1SwitchIngressParser(
         packet_in pkt,
-        out pipe1_header_t hdr,
+        out pipe2_header_t hdr,
         out metadata_t ig_md,
         out ingress_intrinsic_metadata_t ig_intr_md) {
 
