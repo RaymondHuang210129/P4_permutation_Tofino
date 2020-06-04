@@ -129,7 +129,26 @@ control Pipe1SwitchIngressDeparser(
         in ingress_intrinsic_metadata_for_deparser_t ig_dprsr_md) {
 
     apply {
-        pkt.emit(hdr);
+        pkt.emit(hdr.ethernet);
+        pkt.emit(hdr.ipv4);
+        pkt.emit(hdr.udp);
+        pkt.advance(2816);
+        pkt.emit(hdr.group0);
+        pkt.emit(hdr.group1);
+        pkt.emit(hdr.group2);
+        pkt.emit(hdr.group3);
+        pkt.emit(hdr.group4);
+        pkt.emit(hdr.group5);
+        pkt.emit(hdr.group6);
+        pkt.emit(hdr.group7);
+        pkt.emit(hdr.group8);
+        pkt.emit(hdr.group9);
+        pkt.emit(hdr.group10);
+        pkt.emit(hdr.group11);
+        pkt.emit(hdr.group12);
+        pkt.emit(hdr.group13);
+        pkt.emit(hdr.group14);
+        pkt.emit(hdr.group15);
     }
 }
 
