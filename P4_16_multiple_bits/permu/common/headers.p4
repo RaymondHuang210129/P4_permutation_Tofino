@@ -63,7 +63,9 @@ header key_buf_h {
 }
 
 header pipe2_ignore_h {
-    bit<32> data;
+    bit<8> data1;
+    @padding bit<32> data2;
+    bit<8> data3;
 }
 
 header pipe3_ignore_h {
