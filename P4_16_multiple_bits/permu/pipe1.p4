@@ -37,7 +37,8 @@ parser Pipe1SwitchIngressParser(
     }
 
     state parse_ignore {
-        pkt.advance(2816);
+        //pkt.advance(2816);
+        pkt.extract<2816>(_);
         transition parse_group_0;
     }
 
