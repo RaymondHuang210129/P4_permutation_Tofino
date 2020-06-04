@@ -62,19 +62,19 @@ header key_buf_h {
     bit<32> code4;
 }
 
-@padding
+
 header pipe2_ignore_h {
-    bit<2816> data;
+    @padding bit<2816> data;
 }
 
-@padding
+
 header pipe3_ignore_h {
-    bit<5632> data;
+    @padding bit<5632> data;
 }
 
-@padding
+
 header pipe4_ignore_h {
-    bit<8448> data;
+    @padding bit<8448> data;
 }
 
 struct pipe1_header_t {
