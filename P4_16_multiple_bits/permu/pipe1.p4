@@ -1028,7 +1028,7 @@ control Pipe1SwitchIngress(
                 cluster## clst ##_bit## b_idx ##_110_action;                       \
                 cluster## clst ##_bit## b_idx ##_111_action;                       \
             }                                                                      \
-            const default_action = cluster## clst ##_bit## b_idx ##_000_action;    \
+            const default_action = cluster## clst ##_bit## b_idx ##_111_action;    \
             size = 4;                                                              \
         }
     _TABLE_MATCH(0, 0, 0)
