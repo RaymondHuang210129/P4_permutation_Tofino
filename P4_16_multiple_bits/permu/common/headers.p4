@@ -62,94 +62,10 @@ header key_buf_h {
     bit<32> code4;
 }
 
-
-header pipe2_ignore_h {
-    @padding bit<2816> data;
-}
-
-
-header pipe3_ignore_h {
-    @padding bit<5632> data;
-}
-
-
-header pipe4_ignore_h {
-    @padding bit<8448> data;
-}
-
 struct pipe1_header_t {
     ethernet_h ethernet;
     ipv4_h ipv4;
     udp_h udp;
-    data_group_h group0;
-    data_group_h group1;
-    data_group_h group2;
-    data_group_h group3;
-    data_group_h group4;
-    data_group_h group5;
-    data_group_h group6;
-    data_group_h group7;
-    data_group_h group8;
-    data_group_h group9;
-    data_group_h group10;
-    data_group_h group11;
-    data_group_h group12;
-    data_group_h group13;
-    data_group_h group14;
-    data_group_h group15;
-}
-
-struct pipe2_header_t {
-    ethernet_h ethernet;
-    ipv4_h ipv4;
-    udp_h udp;
-    @padding pipe2_ignore_h ignore;
-    data_group_h group0;
-    data_group_h group1;
-    data_group_h group2;
-    data_group_h group3;
-    data_group_h group4;
-    data_group_h group5;
-    data_group_h group6;
-    data_group_h group7;
-    data_group_h group8;
-    data_group_h group9;
-    data_group_h group10;
-    data_group_h group11;
-    data_group_h group12;
-    data_group_h group13;
-    data_group_h group14;
-    data_group_h group15;
-}
-
-struct pipe3_header_t {
-    ethernet_h ethernet;
-    ipv4_h ipv4;
-    udp_h udp;
-    pipe3_ignore_h ignore;
-    data_group_h group0;
-    data_group_h group1;
-    data_group_h group2;
-    data_group_h group3;
-    data_group_h group4;
-    data_group_h group5;
-    data_group_h group6;
-    data_group_h group7;
-    data_group_h group8;
-    data_group_h group9;
-    data_group_h group10;
-    data_group_h group11;
-    data_group_h group12;
-    data_group_h group13;
-    data_group_h group14;
-    data_group_h group15;
-}
-
-struct pipe4_header_t {
-    ethernet_h ethernet;
-    ipv4_h ipv4;
-    udp_h udp;
-    pipe4_ignore_h ignore;
     data_group_h group0;
     data_group_h group1;
     data_group_h group2;
