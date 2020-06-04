@@ -195,7 +195,7 @@ control Pipe1SwitchIngress(
             set_egr;
             set_drop;
         }
-        const default_action = set_egr(132);
+        const default_action = set_egr(0);
         size = 1024;
     }
 
@@ -1125,61 +1125,7 @@ control Pipe1SwitchIngress(
         cluster5_bit12.apply();
         cluster6_bit12.apply();
         cluster7_bit12.apply();
-/*
-        //---stage 6
-        cluster0_bit5.apply();
-        cluster1_bit5.apply();
-        cluster2_bit5.apply();
-        cluster3_bit5.apply();
-        cluster4_bit5.apply();
-        cluster5_bit5.apply();
-        cluster6_bit5.apply();
-        cluster7_bit5.apply();
-        //---stage 7
-        cluster0_bit6.apply();
-        cluster1_bit6.apply();
-        cluster2_bit6.apply();
-        cluster3_bit6.apply();
-        cluster4_bit6.apply();
-        cluster5_bit6.apply();
-        cluster6_bit6.apply();
-        cluster7_bit6.apply();
-        //---stage 8
-        cluster0_bit7.apply();
-        cluster1_bit7.apply();
-        cluster2_bit7.apply();
-        cluster3_bit7.apply();
-        cluster4_bit7.apply();
-        cluster5_bit7.apply();
-        cluster6_bit7.apply();
-        cluster7_bit7.apply();
-        //---stage 9
-        cluster0_bit8.apply();
-        cluster1_bit8.apply();
-        cluster2_bit8.apply();
-        cluster3_bit8.apply();
-        cluster4_bit8.apply();
-        cluster5_bit8.apply();
-        cluster6_bit8.apply();
-        cluster7_bit8.apply();
-        //---stage 10
-        cluster0_bit9.apply();
-        cluster1_bit9.apply();
-        cluster2_bit9.apply();
-        cluster3_bit9.apply();
-        cluster4_bit9.apply();
-        cluster5_bit9.apply();
-        cluster6_bit9.apply();
-        cluster7_bit9.apply();
-        //---stage 11
-        cluster0_bit10.apply();
-        cluster1_bit10.apply();
-        cluster2_bit10.apply();
-        cluster3_bit10.apply();
-        cluster4_bit10.apply();
-        cluster5_bit10.apply();
-        cluster6_bit10.apply();
-        cluster7_bit10.apply();
-*/
+
+        ig_tm_md.bypass_egress = 1w1;
     }
 }
