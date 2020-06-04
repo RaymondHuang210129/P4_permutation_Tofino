@@ -40,6 +40,7 @@ header udp_h {
     bit<16> dst_port;
     bit<16> len;
     bit<16> checksum;
+    @padding bit<2816> ignore;
 }
 
 @pa_container_size("ingress", "group0.data0", 32) @pa_container_size("ingress", "group0.data1", 32) @pa_container_size("ingress", "group0.data2", 32) @pa_container_size("ingress", "group0.data3", 16) @pa_container_size("ingress", "group0.data4", 16) @pa_container_size("ingress", "group0.data5", 16) @pa_container_size("ingress", "group0.data6", 16) @pa_container_size("ingress", "group0.data7", 8, 8) 
