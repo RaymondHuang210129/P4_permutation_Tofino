@@ -119,7 +119,7 @@ parser Pipe1SwitchIngressParser(
 
 control Pipe1SwitchIngressDeparser(
         packet_out pkt,
-        inout pipe1_header_t hdr,
+        inout pipe2_header_t hdr,
         in metadata_t ig_md,
         in ingress_intrinsic_metadata_for_deparser_t ig_dprsr_md) {
 
@@ -129,7 +129,7 @@ control Pipe1SwitchIngressDeparser(
 }
 
 control Pipe1SwitchIngress(
-        inout pipe1_header_t hdr,
+        inout pipe2_header_t hdr,
         inout metadata_t ig_md,
         in ingress_intrinsic_metadata_t ig_intr_md,
         in ingress_intrinsic_metadata_from_parser_t ig_prsr_md,
