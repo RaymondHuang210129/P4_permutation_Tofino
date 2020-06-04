@@ -33,12 +33,7 @@ parser Pipe1SwitchIngressParser(
 
     state parse_udp {
         pkt.extract(hdr.udp);
-        transition parse_ignore;
-    }
-
-    state parse_ignore {
-        //pkt.advance(2816);
-        pkt.extract<bit<2816>>(_);
+        pkt.advance(2816);
         transition parse_group_0;
     }
 
