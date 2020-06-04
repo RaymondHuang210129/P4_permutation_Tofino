@@ -132,7 +132,6 @@ control Pipe1SwitchIngressDeparser(
         pkt.emit(hdr.ethernet);
         pkt.emit(hdr.ipv4);
         pkt.emit(hdr.udp);
-        pkt.advance(2816);
         pkt.emit(hdr.group0);
         pkt.emit(hdr.group1);
         pkt.emit(hdr.group2);
