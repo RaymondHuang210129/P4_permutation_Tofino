@@ -64,17 +64,17 @@ header key_buf_h {
 
 
 header pipe2_ignore_h {
-    @padding bit<2816> data;
+    bit<2816> data;
 }
 
 
 header pipe3_ignore_h {
-    @padding bit<5632> data;
+    bit<5632> data;
 }
 
 
 header pipe4_ignore_h {
-    @padding bit<8448> data;
+    bit<8448> data;
 }
 
 struct pipe1_header_t {
@@ -103,7 +103,7 @@ struct pipe2_header_t {
     ethernet_h ethernet;
     ipv4_h ipv4;
     udp_h udp;
-    pipe2_ignore_h ignore;
+    @padding pipe2_ignore_h ignore;
     data_group_h group0;
     data_group_h group1;
     data_group_h group2;
