@@ -43,7 +43,7 @@ parser PktgenSwitchIngressParser(
 }
 
 control PktgenSwitchIngressDeparser(
-    packet_out packet,
+    packet_out pkt,
     inout pktgen_hdr hdr,
     in empty_metadata_t ig_md,
     in ingress_intrinsic_metadata_for_deparser_t ig_intr_dprsr_md) {
