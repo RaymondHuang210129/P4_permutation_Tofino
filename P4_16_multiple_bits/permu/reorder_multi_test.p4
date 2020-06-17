@@ -5,7 +5,8 @@
 #include <tna.p4>
 #endif
 
-#include "pipe1.p4"
+#include "pipe_encode.p4"
+#include "pipe_pktgen.p4"
 
 #include "common/headers.p4"
 #include "common/util.p4"
@@ -17,6 +18,13 @@ Pipeline(Pipe1SwitchIngressParser(),
          Pipe1SwitchIngressDeparser(),
          EmptyEgressParser(),
          EmptyEgress(),
-         EmptyEgressDeparser()) pipe1;
+         EmptyEgressDeparser()) pipe_encode;
 
-Switch(pipe1) main;
+Pipeline(PktgenSwitchIngressParser(),
+         PktgenSwitchIngress(),
+         PktgenSwitchIngressDeparser(),
+         EmptyEgressParser(),
+         EmptyEgress(),
+         EmptyEgressDeparser()) pipe_pktgen;
+
+Switch(pipe_encode, pipe_pktgen) main;

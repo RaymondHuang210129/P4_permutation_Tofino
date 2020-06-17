@@ -33,7 +33,6 @@ parser Pipe1SwitchIngressParser(
 
     state parse_udp {
         pkt.extract(hdr.udp);
-        pkt.advance(32w176);
         transition parse_group_0;
     }
 
