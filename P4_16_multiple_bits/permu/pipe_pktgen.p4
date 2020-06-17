@@ -101,4 +101,15 @@ control PktgenSwitchIngress(
         const default_action = drop();
         size = 1024;
     }
+
+    apply {
+        if (hdr.timer.isValid()) {
+            t.apply();
+        } else if (hdr.port_down.isValid()) {
+            p.apply();
+        } else {
+            drop();
+        }
+        ig_intr_tm_md.bypass_egress = 1w1;
+    }
 }
